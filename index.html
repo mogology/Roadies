@@ -59,6 +59,7 @@
     body {
       margin: 0;
       padding: 0;
+
       width: 100%;
       min-height: 100%;
 
@@ -92,6 +93,10 @@
     }
 
 
+    /* =====================================================
+       APP
+       ===================================================== */
+
     .app {
 
       width: 100%;
@@ -108,30 +113,39 @@
 
 
     /* =====================================================
-       TOP
+       HEADER
        ===================================================== */
 
     .top {
 
       display: flex;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
+
       align-items: center;
 
       font-size: 10px;
+
       font-weight: 600;
 
-      letter-spacing: 0.14em;
+      letter-spacing: 0.15em;
+
       text-transform: uppercase;
     }
 
 
     .brand {
+
       letter-spacing: 0.18em;
+
     }
 
 
     .country {
+
       opacity: 0.45;
+
     }
 
 
@@ -140,19 +154,25 @@
        ===================================================== */
 
     .screen {
+
       display: none;
+
       flex: 1;
+
       flex-direction: column;
+
     }
 
 
     .screen.active {
+
       display: flex;
+
     }
 
 
     /* =====================================================
-       EDITORIAL HEADINGS
+       EDITORIAL FONT
        ===================================================== */
 
     h1,
@@ -168,6 +188,7 @@
       font-weight: 600;
 
       letter-spacing: -0.055em;
+
     }
 
 
@@ -179,7 +200,8 @@
 
       margin-top: 72px;
 
-      max-width: 620px;
+      max-width: 650px;
+
     }
 
 
@@ -190,6 +212,7 @@
       letter-spacing: 0.16em;
 
       margin-bottom: 28px;
+
     }
 
 
@@ -210,6 +233,7 @@
       letter-spacing: -0.065em;
 
       font-weight: 600;
+
     }
 
 
@@ -222,23 +246,25 @@
       font-size: 17px;
 
       line-height: 1.4;
+
     }
 
 
     /* =====================================================
-       BUTTONS
+       BUTTON
        ===================================================== */
 
     .primary-button {
 
-      margin-top: 40px;
-
       width: 100%;
+
       max-width: 340px;
 
       height: 58px;
 
-      border: none;
+      margin-top: 40px;
+
+      border: 0;
 
       background: #111111;
 
@@ -251,31 +277,34 @@
       letter-spacing: 0.14em;
 
       text-transform: uppercase;
+
     }
 
 
     .primary-button:disabled {
 
-      background: #d7d7d7;
+      background: #d8d8d8;
 
       cursor: default;
+
     }
 
 
     .secondary-button {
 
-      margin-top: 40px;
-
       width: 100%;
+
       max-width: 340px;
 
       height: 58px;
 
+      margin-top: 40px;
+
+      border: 1px solid #111111;
+
       background: #ffffff;
 
       color: #111111;
-
-      border: 1px solid #111111;
 
       font-size: 11px;
 
@@ -284,6 +313,7 @@
       letter-spacing: 0.14em;
 
       text-transform: uppercase;
+
     }
 
 
@@ -295,7 +325,8 @@
 
       margin-top: 55px;
 
-      max-width: 620px;
+      max-width: 720px;
+
     }
 
 
@@ -307,12 +338,11 @@
         clamp(52px, 12vw, 88px);
 
       line-height: 0.9;
+
     }
 
 
     .camera-box {
-
-      position: relative;
 
       width: 100%;
 
@@ -320,7 +350,10 @@
 
       background: #f2f2f2;
 
+      position: relative;
+
       overflow: hidden;
+
     }
 
 
@@ -345,11 +378,14 @@
       letter-spacing: 0.1em;
 
       text-transform: uppercase;
+
     }
 
 
     #fileInput {
+
       display: none;
+
     }
 
 
@@ -362,6 +398,7 @@
       margin-top: 55px;
 
       max-width: 720px;
+
     }
 
 
@@ -373,10 +410,13 @@
         clamp(58px, 13vw, 100px);
 
       line-height: 0.86;
+
     }
 
 
     .photo-preview {
+
+      display: block;
 
       width: 100%;
 
@@ -384,21 +424,21 @@
 
       object-fit: cover;
 
-      display: block;
-
       background: #f2f2f2;
 
       margin-bottom: 30px;
+
     }
 
 
     /* =====================================================
-       META
+       DETAILS
        ===================================================== */
 
     .meta {
 
       border-top: 1px solid #111111;
+
     }
 
 
@@ -414,10 +454,10 @@
 
       padding: 15px 0;
 
-      border-bottom:
-        1px solid #dddddd;
+      border-bottom: 1px solid #dddddd;
 
       font-size: 14px;
+
     }
 
 
@@ -430,6 +470,7 @@
       text-transform: uppercase;
 
       color: #777777;
+
     }
 
 
@@ -437,12 +478,13 @@
 
       word-break: break-word;
 
-      font-weight: 400;
     }
 
 
     .ok {
+
       font-weight: 600;
+
     }
 
 
@@ -450,44 +492,77 @@
        COMMENT
        ===================================================== */
 
+    .comment-wrap {
+
+      margin-top: 28px;
+
+    }
+
+
+    .comment-label {
+
+      margin-bottom: 10px;
+
+      font-size: 10px;
+
+      letter-spacing: 0.13em;
+
+      text-transform: uppercase;
+
+      color: #777777;
+
+    }
+
+
     textarea {
 
       display: block;
 
       width: 100%;
 
-      min-height: 120px;
-
-      margin-top: 24px;
+      min-height: 110px;
 
       padding: 16px;
 
-      border:
-        1px solid #d7d7d7;
+      border: 1px solid #d7d7d7;
 
       background: #ffffff;
 
       color: #111111;
 
-      resize: vertical;
-
       outline: none;
+
+      resize: vertical;
 
       font-size: 15px;
 
       line-height: 1.5;
+
     }
 
 
     textarea:focus {
 
       border-color: #111111;
+
     }
 
 
     textarea::placeholder {
 
-      color: #777777;
+      color: #888888;
+
+    }
+
+
+    .comment-hint {
+
+      margin-top: 8px;
+
+      font-size: 11px;
+
+      color: #888888;
+
     }
 
 
@@ -504,11 +579,14 @@
       font-size: 12px;
 
       color: #555555;
+
     }
 
 
     .error {
+
       color: #c00020;
+
     }
 
 
@@ -521,10 +599,13 @@
       margin-top: 72px;
 
       max-width: 600px;
+
     }
 
 
     .success-number {
+
+      margin-bottom: 28px;
 
       font-size: 11px;
 
@@ -532,7 +613,6 @@
 
       letter-spacing: 0.15em;
 
-      margin-bottom: 28px;
     }
 
 
@@ -544,6 +624,7 @@
         clamp(65px, 14vw, 110px);
 
       line-height: 0.85;
+
     }
 
 
@@ -556,6 +637,7 @@
       font-size: 17px;
 
       line-height: 1.4;
+
     }
 
 
@@ -568,7 +650,9 @@
       .app {
 
         padding-left: 7vw;
+
         padding-right: 7vw;
+
       }
 
     }
@@ -619,14 +703,18 @@
 
 
       <h1 class="home-title">
+
         Better roads<br>
         begin here.
+
       </h1>
 
 
       <div class="home-copy">
+
         See a broken road?<br>
         Make it visible.
+
       </div>
 
 
@@ -634,7 +722,9 @@
         id="startButton"
         class="primary-button"
       >
+
         Report a broken road
+
       </button>
 
     </div>
@@ -655,15 +745,19 @@
     <div class="camera-content">
 
       <h1 class="camera-title">
+
         Show us<br>
         the road.
+
       </h1>
 
 
       <div class="camera-box">
 
         <div class="camera-placeholder">
+
           Camera ready
+
         </div>
 
       </div>
@@ -681,7 +775,9 @@
         id="takePhotoButton"
         class="primary-button"
       >
+
         Take photo
+
       </button>
 
     </div>
@@ -703,8 +799,10 @@
 
 
       <h1 class="review-title">
+
         Almost<br>
         there.
+
       </h1>
 
 
@@ -714,6 +812,8 @@
         alt="Road photo"
       >
 
+
+      <!-- DETAILS -->
 
       <div class="meta">
 
@@ -734,7 +834,6 @@
         </div>
 
 
-
         <div class="meta-row">
 
           <div class="meta-label">
@@ -749,7 +848,6 @@
           </div>
 
         </div>
-
 
 
         <div
@@ -768,7 +866,6 @@
           ></div>
 
         </div>
-
 
 
         <div
@@ -792,12 +889,38 @@
       </div>
 
 
-      <textarea
-        id="commentInput"
-        maxlength="300"
-        placeholder="Anything else? Optional."
-      ></textarea>
 
+      <!-- =================================================
+           COMMENT
+           ================================================= -->
+
+      <div class="comment-wrap">
+
+        <div class="comment-label">
+
+          Anything else?
+
+        </div>
+
+
+        <textarea
+          id="commentInput"
+          maxlength="300"
+          placeholder="Tell us what is wrong here. Optional."
+        ></textarea>
+
+
+        <div class="comment-hint">
+
+          Max 300 characters
+
+        </div>
+
+      </div>
+
+
+
+      <!-- STATUS -->
 
       <div
         id="statusMessage"
@@ -805,12 +928,17 @@
       ></div>
 
 
+
+      <!-- SEND -->
+
       <button
         id="sendButton"
         class="primary-button"
         disabled
       >
+
         Send photo
+
       </button>
 
 
@@ -833,18 +961,24 @@
 
 
       <div class="success-number">
+
         REPORT RECEIVED
+
       </div>
 
 
       <h1 class="success-title">
+
         Thank<br>
         you.
+
       </h1>
 
 
       <div class="success-copy">
+
         Your road report has been recorded.
+
       </div>
 
 
@@ -852,7 +986,9 @@
         id="anotherButton"
         class="secondary-button"
       >
+
         Report another road
+
       </button>
 
 
@@ -876,11 +1012,10 @@ const SUPABASE_URL =
 
 
 /*
-  ==========================================================
-  PASTE ONLY YOUR sb_publishable_ KEY HERE
-  ==========================================================
+  PASTE YOUR EXISTING
+  sb_publishable_... KEY HERE.
 
-  DO NOT paste sb_secret_ here.
+  NEVER put sb_secret_ here.
 */
 
 const SUPABASE_PUBLISHABLE_KEY =
@@ -1055,12 +1190,12 @@ let currentObjectUrl =
   null;
 
 
-let sendMode =
-  "send";
-
-
 let isSending =
   false;
+
+
+let sendMode =
+  "send";
 
 
 
@@ -1077,44 +1212,32 @@ function showScreen(screen) {
     successScreen
   ]
   .forEach(
-    item => item.classList.remove("active")
+    item => {
+
+      item.classList.remove(
+        "active"
+      );
+
+    }
   );
 
 
-  screen.classList.add("active");
+  screen.classList.add(
+    "active"
+  );
 
 }
 
 
+
 /* =========================================================
-   START
+   OPEN CAMERA
    ========================================================= */
-
-startButton.addEventListener(
-  "click",
-  () => {
-
-    openCamera();
-
-  }
-);
-
-
-
-takePhotoButton.addEventListener(
-  "click",
-  () => {
-
-    fileInput.click();
-
-  }
-);
-
-
 
 function openCamera() {
 
   resetForm();
+
 
   showScreen(
     cameraScreen
@@ -1135,7 +1258,29 @@ function openCamera() {
 
 
 /* =========================================================
-   FILE SELECT
+   HOME
+   ========================================================= */
+
+startButton.addEventListener(
+  "click",
+  openCamera
+);
+
+
+
+takePhotoButton.addEventListener(
+  "click",
+  () => {
+
+    fileInput.click();
+
+  }
+);
+
+
+
+/* =========================================================
+   FILE INPUT
    ========================================================= */
 
 fileInput.addEventListener(
@@ -1147,11 +1292,15 @@ fileInput.addEventListener(
 
 
     if (!file) {
+
       return;
+
     }
 
 
-    await preparePhoto(file);
+    await preparePhoto(
+      file
+    );
 
   }
 );
@@ -1159,10 +1308,12 @@ fileInput.addEventListener(
 
 
 /* =========================================================
-   PHOTO PREPARATION
+   PREPARE PHOTO
    ========================================================= */
 
-async function preparePhoto(file) {
+async function preparePhoto(
+  file
+) {
 
   compressedBlob =
     null;
@@ -1197,7 +1348,9 @@ async function preparePhoto(file) {
   try {
 
     const blob =
-      await compressImage(file);
+      await compressImage(
+        file
+      );
 
 
     compressedBlob =
@@ -1224,7 +1377,9 @@ async function preparePhoto(file) {
 
 
     photoSize.textContent =
-      formatBytes(blob.size);
+      formatBytes(
+        blob.size
+      );
 
 
     statusMessage.textContent =
@@ -1241,7 +1396,7 @@ async function preparePhoto(file) {
   } catch (error) {
 
     console.error(
-      "[ROADIES] PHOTO PREPARATION ERROR",
+      "[ROADIES] Photo preparation failed:",
       error
     );
 
@@ -1261,13 +1416,17 @@ async function preparePhoto(file) {
 
 
 /* =========================================================
-   IMAGE COMPRESSION
+   COMPRESS IMAGE
    ========================================================= */
 
-async function compressImage(file) {
+async function compressImage(
+  file
+) {
 
   const bitmap =
-    await createImageBitmap(file);
+    await createImageBitmap(
+      file
+    );
 
 
   const MAX_WIDTH =
@@ -1282,7 +1441,9 @@ async function compressImage(file) {
     bitmap.height;
 
 
-  if (width > MAX_WIDTH) {
+  if (
+    width > MAX_WIDTH
+  ) {
 
     const ratio =
       MAX_WIDTH / width;
@@ -1391,7 +1552,7 @@ function canvasToBlob(
 
             reject(
               new Error(
-                "Compression failed"
+                "Image compression failed"
               )
             );
 
@@ -1400,7 +1561,9 @@ function canvasToBlob(
           }
 
 
-          resolve(blob);
+          resolve(
+            blob
+          );
 
         },
         "image/jpeg",
@@ -1473,7 +1636,9 @@ function findLocation() {
         `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
 
 
-      if (currentDigipin) {
+      if (
+        currentDigipin
+      ) {
 
         digipinRow.style.display =
           "grid";
@@ -1492,7 +1657,7 @@ function findLocation() {
     error => {
 
       console.error(
-        "[ROADIES] GPS ERROR",
+        "[ROADIES] Location error:",
         error
       );
 
@@ -1583,10 +1748,6 @@ function getDIGIPIN(
       (maxLon - minLon) / 4;
 
 
-    /*
-      LATITUDE
-    */
-
     let nextMaxLat =
       maxLat;
 
@@ -1627,10 +1788,6 @@ function getDIGIPIN(
 
     }
 
-
-    /*
-      LONGITUDE
-    */
 
     let nextMinLon =
       minLon;
@@ -1711,7 +1868,9 @@ function getDIGIPIN(
    DIGIPIN DISPLAY
    ========================================================= */
 
-function formatDIGIPIN(code) {
+function formatDIGIPIN(
+  code
+) {
 
   if (
     !code ||
@@ -1736,7 +1895,7 @@ function formatDIGIPIN(code) {
 
 
 /* =========================================================
-   SEND BUTTON
+   SEND
    ========================================================= */
 
 sendButton.addEventListener(
@@ -1744,8 +1903,8 @@ sendButton.addEventListener(
   async () => {
 
     /*
-      If this is the failure-state button,
-      go back to camera.
+      After an error, the button becomes
+      TRY AGAIN and returns to camera.
     */
 
     if (
@@ -1759,15 +1918,18 @@ sendButton.addEventListener(
     }
 
 
-    if (isSending) {
+    if (
+      isSending
+    ) {
+
       return;
+
     }
 
 
-    if (!compressedBlob) {
-
-      statusMessage.textContent =
-        "Photo is still preparing.";
+    if (
+      !compressedBlob
+    ) {
 
       return;
 
@@ -1782,7 +1944,9 @@ sendButton.addEventListener(
       statusMessage.textContent =
         "Waiting for location…";
 
+
       findLocation();
+
 
       return;
 
@@ -1843,25 +2007,22 @@ async function sendReport() {
     `${reportId}.jpg`;
 
 
+  /*
+    ========================================================
+    UPLOAD PHOTO
+    ========================================================
+  */
+
   console.log(
-    "[ROADIES] Starting upload",
+    "[ROADIES] Uploading photo...",
     {
       filePath,
-      size: compressedBlob.size,
-      latitude: currentLocation.latitude,
-      longitude: currentLocation.longitude,
-      digipin: currentDigipin
+      size: compressedBlob.size
     }
   );
 
 
   try {
-
-
-    /* =====================================================
-       STEP 1
-       UPLOAD PHOTO
-       ===================================================== */
 
     const {
       data: uploadData,
@@ -1869,7 +2030,9 @@ async function sendReport() {
     } =
       await supabaseClient
         .storage
-        .from(STORAGE_BUCKET)
+        .from(
+          STORAGE_BUCKET
+        )
         .upload(
           filePath,
           compressedBlob,
@@ -1886,46 +2049,35 @@ async function sendReport() {
         );
 
 
-    if (uploadError) {
+    if (
+      uploadError
+    ) {
 
       console.error(
-        "[ROADIES] STORAGE UPLOAD FAILED",
-        {
-          message:
-            uploadError.message,
-
-          details:
-            uploadError.details,
-
-          hint:
-            uploadError.hint,
-
-          statusCode:
-            uploadError.statusCode
-        }
+        "[ROADIES] STORAGE ERROR",
+        uploadError
       );
 
 
-      throw new Error(
-        "STORAGE_UPLOAD_FAILED"
-      );
+      throw uploadError;
 
     }
 
 
     console.log(
-      "[ROADIES] Photo uploaded",
+      "[ROADIES] Photo uploaded ✓",
       uploadData
     );
 
 
 
-    /* =====================================================
-       STEP 2
-       DATABASE
-       ===================================================== */
+    /*
+      ======================================================
+      INSERT REPORT
+      ======================================================
+    */
 
-    const reportPayload = {
+    const report = {
 
       latitude:
         currentLocation.latitude,
@@ -1949,8 +2101,8 @@ async function sendReport() {
 
 
     console.log(
-      "[ROADIES] Inserting report",
-      reportPayload
+      "[ROADIES] Saving report...",
+      report
     );
 
 
@@ -1958,50 +2110,46 @@ async function sendReport() {
       error: reportError
     } =
       await supabaseClient
-        .from(REPORT_TABLE)
+        .from(
+          REPORT_TABLE
+        )
         .insert(
-          reportPayload
+          report
         );
 
 
-    if (reportError) {
+    if (
+      reportError
+    ) {
 
       console.error(
-        "[ROADIES] DATABASE INSERT FAILED",
-        {
-          message:
-            reportError.message,
-
-          details:
-            reportError.details,
-
-          hint:
-            reportError.hint,
-
-          code:
-            reportError.code
-        }
+        "[ROADIES] DATABASE ERROR",
+        reportError
       );
 
 
-      throw new Error(
-        "DATABASE_INSERT_FAILED"
-      );
+      throw reportError;
 
     }
 
 
     console.log(
-      "[ROADIES] REPORT SUCCESS"
+      "[ROADIES] REPORT SAVED ✓"
     );
 
 
-    /* =====================================================
-       SUCCESS
-       ===================================================== */
+    /*
+      ======================================================
+      SUCCESS
+      ======================================================
+    */
 
     isSending =
       false;
+
+
+    sendMode =
+      "send";
 
 
     showScreen(
@@ -2015,15 +2163,25 @@ async function sendReport() {
   } catch (error) {
 
     console.error(
-      "[ROADIES] SEND FAILED",
+      "===================================="
+    );
+
+    console.error(
+      "[ROADIES] SUBMISSION FAILED"
+    );
+
+    console.error(
       error
+    );
+
+    console.error(
+      "===================================="
     );
 
 
     /*
-      User sees simple message.
-      Developer sees actual error
-      in browser console.
+      Friendly user message.
+      Technical error remains in console.
     */
 
     statusMessage.textContent =
@@ -2039,16 +2197,16 @@ async function sendReport() {
       "retry";
 
 
+    isSending =
+      false;
+
+
     sendButton.disabled =
       false;
 
 
     sendButton.textContent =
       "Try again";
-
-
-    isSending =
-      false;
 
   }
 
@@ -2076,12 +2234,12 @@ function resetForm() {
     null;
 
 
-  sendMode =
-    "send";
-
-
   isSending =
     false;
+
+
+  sendMode =
+    "send";
 
 
   commentInput.value =
@@ -2133,11 +2291,14 @@ function resetForm() {
     "";
 
 
-  if (currentObjectUrl) {
+  if (
+    currentObjectUrl
+  ) {
 
     URL.revokeObjectURL(
       currentObjectUrl
     );
+
 
     currentObjectUrl =
       null;
@@ -2154,22 +2315,18 @@ function resetForm() {
 
 
 /* =========================================================
-   ANOTHER REPORT
+   SUCCESS
    ========================================================= */
 
 anotherButton.addEventListener(
   "click",
-  () => {
-
-    openCamera();
-
-  }
+  openCamera
 );
 
 
 
 /* =========================================================
-   FORMAT BYTES
+   BYTES
    ========================================================= */
 
 function formatBytes(
@@ -2208,7 +2365,6 @@ function formatBytes(
   );
 
 }
-
 
 </script>
 
