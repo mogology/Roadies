@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
 
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1, viewport-fit=cover"
-  />
+  >
 
-  <meta name="theme-color" content="#ffffff" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="default"
-  />
+  <meta name="theme-color" content="#ffffff">
 
   <title>Roadies</title>
 
   <style>
-    /* =====================================================
-       RESET
-    ===================================================== */
 
     * {
       box-sizing: border-box;
@@ -32,8 +24,8 @@
       padding: 0;
       width: 100%;
       min-height: 100%;
-      background: #ffffff;
-      color: #111111;
+      background: #fff;
+      color: #111;
     }
 
     body {
@@ -43,7 +35,6 @@
         sans-serif;
 
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
     }
 
     button,
@@ -52,15 +43,6 @@
       font: inherit;
     }
 
-    button {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-
-    /* =====================================================
-       APP
-    ===================================================== */
-
     .app {
       min-height: 100vh;
       min-height: 100svh;
@@ -68,25 +50,23 @@
       display: flex;
       flex-direction: column;
 
-      background: #ffffff;
+      background: #fff;
     }
 
 
-    /* =====================================================
+    /* ================================================
        HEADER
-    ===================================================== */
+    ================================================ */
 
     header {
-      width: 100%;
-
       padding:
         calc(22px + env(safe-area-inset-top))
         22px
         0;
 
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
 
     .logo {
@@ -104,27 +84,26 @@
     .edition {
       font-size: 9px;
       letter-spacing: 0.18em;
-      color: #888888;
+      color: #888;
     }
 
 
-    /* =====================================================
+    /* ================================================
        MAIN
-    ===================================================== */
+    ================================================ */
 
     main {
       flex: 1;
 
       width: 100%;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
       padding:
-        30px
+        38px
         22px
         50px;
+
+      display: flex;
+      justify-content: center;
     }
 
     .screen {
@@ -135,7 +114,7 @@
 
       animation:
         screenIn
-        240ms
+        220ms
         ease
         both;
     }
@@ -145,6 +124,7 @@
     }
 
     @keyframes screenIn {
+
       from {
         opacity: 0;
         transform: translateY(8px);
@@ -154,32 +134,32 @@
         opacity: 1;
         transform: translateY(0);
       }
+
     }
 
 
-    /* =====================================================
+    /* ================================================
        HOME
-    ===================================================== */
+    ================================================ */
 
-    .hero {
-      text-align: center;
-    }
-
-    .hero-number {
+    .home-number {
       font-family:
         Georgia,
         "Times New Roman",
         serif;
 
-      font-size: 92px;
-      line-height: 0.8;
+      font-size: 90px;
+      line-height: .8;
 
       letter-spacing: -0.09em;
 
-      margin-bottom: 42px;
+      margin:
+        35px
+        0
+        48px;
     }
 
-    h1 {
+    .home-title {
       margin: 0;
 
       font-family:
@@ -187,75 +167,75 @@
         "Times New Roman",
         serif;
 
-      font-size:
-        clamp(
-          42px,
-          11vw,
-          72px
-        );
-
-      line-height: 0.94;
-
       font-weight: 400;
 
-      letter-spacing: -0.06em;
+      font-size:
+        clamp(
+          44px,
+          12vw,
+          76px
+        );
+
+      line-height: .93;
+
+      letter-spacing: -0.065em;
     }
 
-    .sub {
+    .home-sub {
       margin:
-        20px
-        auto
+        22px
+        0
         42px;
 
       max-width: 320px;
 
-      font-size: 14px;
-      line-height: 1.55;
+      color: #666;
 
-      color: #666666;
+      font-size: 14px;
+
+      line-height: 1.55;
     }
 
 
-    /* =====================================================
+    /* ================================================
        BUTTONS
-    ===================================================== */
+    ================================================ */
 
     .primary {
       width: 100%;
 
-      border: 1px solid #111111;
-
-      background: #111111;
-      color: #ffffff;
-
       padding: 19px 20px;
+
+      border:
+        1px solid #111;
+
+      background: #111;
+
+      color: #fff;
 
       cursor: pointer;
 
       font-size: 12px;
+
       font-weight: 700;
 
-      letter-spacing: 0.08em;
+      letter-spacing: .08em;
 
       transition:
-        transform 150ms ease,
-        background 150ms ease,
-        color 150ms ease,
-        border-color 150ms ease;
+        transform .15s ease,
+        background .15s ease;
     }
 
     .primary:active:not(:disabled) {
-      transform: scale(0.985);
+      transform: scale(.985);
     }
 
     .primary:disabled {
-      background: #eeeeee;
-      border-color: #eeeeee;
-      color: #999999;
+      background: #eee;
+      border-color: #eee;
+      color: #999;
 
       cursor: not-allowed;
-
-      transform: none;
     }
 
     .secondary {
@@ -263,50 +243,67 @@
 
       margin-top: 10px;
 
-      border: 1px solid #dddddd;
-
-      background: #ffffff;
-      color: #111111;
-
       padding: 16px;
+
+      border:
+        1px solid #ddd;
+
+      background: #fff;
+
+      color: #111;
 
       cursor: pointer;
 
       font-size: 12px;
-
-      transition: background 150ms ease;
-    }
-
-    .secondary:active {
-      background: #f5f5f5;
     }
 
 
-    /* =====================================================
+    /* ================================================
        CAMERA
-    ===================================================== */
+    ================================================ */
+
+    .camera-title {
+      margin-bottom: 28px;
+    }
+
+    .camera-title h1 {
+      margin: 0;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-weight: 400;
+
+      font-size: 58px;
+
+      line-height: .95;
+
+      letter-spacing: -.06em;
+    }
 
     .camera-box {
       width: 100%;
 
       aspect-ratio: 4 / 3;
 
-      background: #f5f5f5;
-
-      overflow: hidden;
+      margin-bottom: 18px;
 
       position: relative;
 
-      margin-bottom: 18px;
+      overflow: hidden;
+
+      background: #f4f4f4;
     }
 
     .camera-box img {
       width: 100%;
       height: 100%;
 
-      object-fit: cover;
-
       display: none;
+
+      object-fit: cover;
     }
 
     .camera-placeholder {
@@ -319,27 +316,52 @@
       align-items: center;
       justify-content: center;
 
-      color: #888888;
+      color: #888;
 
       font-size: 11px;
 
-      letter-spacing: 0.12em;
+      letter-spacing: .12em;
     }
 
 
-    /* =====================================================
+    /* ================================================
        REVIEW
-    ===================================================== */
+    ================================================ */
 
     .review-title {
-      margin-bottom: 28px;
+      margin-bottom: 30px;
+    }
+
+    .review-title h1 {
+      margin: 0;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(
+          50px,
+          13vw,
+          76px
+        );
+
+      font-weight: 400;
+
+      line-height: .92;
+
+      letter-spacing: -.065em;
     }
 
     .details {
-      margin: 25px 0;
+      margin:
+        0
+        0
+        24px;
 
       border-top:
-        1px solid #eeeeee;
+        1px solid #eee;
     }
 
     .detail-row {
@@ -350,24 +372,40 @@
 
       gap: 20px;
 
-      padding: 14px 0;
+      min-height: 60px;
+
+      padding: 13px 0;
 
       border-bottom:
-        1px solid #eeeeee;
+        1px solid #eee;
 
       font-size: 12px;
     }
 
     .detail-label {
-      color: #888888;
+      color: #888;
 
-      letter-spacing: 0.05em;
+      letter-spacing: .05em;
     }
 
     .detail-value {
+      color: #111;
+
       text-align: right;
 
-      color: #111111;
+      font-variant-numeric:
+        tabular-nums;
+    }
+
+    .digipin-value {
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      font-weight: 500;
+
+      letter-spacing: .04em;
     }
 
     textarea {
@@ -375,34 +413,34 @@
 
       min-height: 88px;
 
-      resize: vertical;
+      margin-bottom: 12px;
+
+      padding: 14px;
 
       border:
-        1px solid #dddddd;
+        1px solid #ddd;
 
       outline: none;
 
-      background: #ffffff;
+      background: #fff;
 
-      color: #111111;
+      color: #111;
 
-      padding: 14px;
+      resize: vertical;
 
       font-size: 14px;
 
       line-height: 1.45;
-
-      margin-bottom: 12px;
     }
 
     textarea:focus {
-      border-color: #111111;
+      border-color: #111;
     }
 
 
-    /* =====================================================
+    /* ================================================
        STATUS
-    ===================================================== */
+    ================================================ */
 
     .status {
       min-height: 20px;
@@ -414,38 +452,67 @@
 
       text-align: center;
 
-      font-size: 12px;
+      color: #777;
 
-      color: #777777;
+      font-size: 12px;
     }
 
     .status.success {
-      color: #111111;
+      color: #111;
     }
 
     .status.error {
-      color: #b00020;
+      color: #c00020;
+    }
+
+    .technical-error {
+      display: none;
+
+      margin:
+        0
+        0
+        12px;
+
+      padding: 10px;
+
+      background: #fafafa;
+
+      color: #777;
+
+      font-family: monospace;
+
+      font-size: 9px;
+
+      line-height: 1.4;
+
+      word-break: break-word;
+
+      text-align: left;
+    }
+
+    .technical-error.show {
+      display: block;
     }
 
 
-    /* =====================================================
+    /* ================================================
        OFFLINE
-    ===================================================== */
+    ================================================ */
 
     .offline-note {
       display: none;
+
+      margin-bottom: 12px;
 
       padding: 13px;
 
       background: #f5f5f5;
 
-      color: #555555;
+      color: #555;
 
       font-size: 11px;
 
       line-height: 1.5;
-
-      margin-bottom: 12px;
     }
 
     .offline-note.show {
@@ -453,25 +520,21 @@
     }
 
 
-    /* =====================================================
+    /* ================================================
        SUCCESS
-    ===================================================== */
-
-    .success {
-      text-align: center;
-    }
+    ================================================ */
 
     .success-mark {
       width: 74px;
       height: 74px;
 
       margin:
+        40px
         0
-        auto
         35px;
 
       border:
-        1px solid #111111;
+        1px solid #111;
 
       border-radius: 50%;
 
@@ -483,7 +546,7 @@
       font-size: 27px;
     }
 
-    .success h2 {
+    .success h1 {
       margin: 0;
 
       font-family:
@@ -493,22 +556,27 @@
 
       font-weight: 400;
 
-      font-size: 44px;
+      font-size:
+        clamp(
+          50px,
+          13vw,
+          76px
+        );
 
-      line-height: 0.98;
+      line-height: .92;
 
-      letter-spacing: -0.055em;
+      letter-spacing: -.065em;
     }
 
     .success p {
       max-width: 300px;
 
       margin:
-        18px
-        auto
+        20px
+        0
         35px;
 
-      color: #666666;
+      color: #666;
 
       font-size: 14px;
 
@@ -516,9 +584,9 @@
     }
 
 
-    /* =====================================================
+    /* ================================================
        FOOTER
-    ===================================================== */
+    ================================================ */
 
     footer {
       padding:
@@ -526,45 +594,19 @@
         22px
         calc(22px + env(safe-area-inset-bottom));
 
-      text-align: center;
+      color: #aaa;
 
-      color: #aaaaaa;
+      text-align: center;
 
       font-size: 9px;
 
-      letter-spacing: 0.12em;
+      letter-spacing: .12em;
     }
-
-
-    /* =====================================================
-       HIDDEN FILE INPUT
-    ===================================================== */
 
     #fileInput {
       display: none;
     }
 
-
-    /* =====================================================
-       SMALL SCREEN
-    ===================================================== */
-
-    @media (max-height: 700px) {
-
-      .hero-number {
-        font-size: 70px;
-        margin-bottom: 28px;
-      }
-
-      .sub {
-        margin-bottom: 28px;
-      }
-
-      main {
-        padding-top: 20px;
-        padding-bottom: 30px;
-      }
-    }
   </style>
 </head>
 
@@ -573,9 +615,10 @@
 
 <div class="app">
 
-  <!-- ===================================================
+
+  <!-- ==================================================
        HEADER
-  ==================================================== -->
+  =================================================== -->
 
   <header>
 
@@ -590,10 +633,6 @@
   </header>
 
 
-  <!-- ===================================================
-       MAIN
-  ==================================================== -->
-
   <main>
 
 
@@ -606,30 +645,26 @@
       class="screen active"
     >
 
-      <div class="hero">
-
-        <div class="hero-number">
-          01
-        </div>
-
-        <h1>
-          Better roads<br />
-          begin here.
-        </h1>
-
-        <p class="sub">
-          See a broken road?<br />
-          Make it visible.
-        </p>
-
-        <button
-          class="primary"
-          id="startButton"
-        >
-          REPORT A BROKEN ROAD
-        </button>
-
+      <div class="home-number">
+        01
       </div>
+
+      <h1 class="home-title">
+        Better roads<br>
+        begin here.
+      </h1>
+
+      <p class="home-sub">
+        See a broken road?<br>
+        Make it visible.
+      </p>
+
+      <button
+        class="primary"
+        id="startButton"
+      >
+        REPORT A BROKEN ROAD
+      </button>
 
     </section>
 
@@ -643,12 +678,21 @@
       class="screen"
     >
 
+      <div class="camera-title">
+
+        <h1>
+          Show us<br>
+          the road.
+        </h1>
+
+      </div>
+
       <div class="camera-box">
 
         <img
           id="preview"
           alt="Road photo preview"
-        />
+        >
 
         <div
           id="cameraPlaceholder"
@@ -659,14 +703,12 @@
 
       </div>
 
-
       <input
         id="fileInput"
         type="file"
         accept="image/*"
         capture="environment"
-      />
-
+      >
 
       <button
         class="primary"
@@ -674,7 +716,6 @@
       >
         TAKE PHOTO
       </button>
-
 
       <button
         class="secondary"
@@ -699,7 +740,7 @@
       <div class="review-title">
 
         <h1>
-          Almost<br />
+          Almost<br>
           there.
         </h1>
 
@@ -715,8 +756,8 @@
           </span>
 
           <span
-            class="detail-value"
             id="photoSize"
+            class="detail-value"
           >
             Optimising…
           </span>
@@ -731,10 +772,30 @@
           </span>
 
           <span
-            class="detail-value"
             id="locationText"
+            class="detail-value"
           >
-            Waiting…
+            Finding…
+          </span>
+
+        </div>
+
+
+        <div
+          class="detail-row"
+          id="digipinRow"
+          style="display:none;"
+        >
+
+          <span class="detail-label">
+            DIGIPIN
+          </span>
+
+          <span
+            id="digipinText"
+            class="detail-value digipin-value"
+          >
+            —
           </span>
 
         </div>
@@ -747,8 +808,8 @@
           </span>
 
           <span
-            class="detail-value"
             id="gpsText"
+            class="detail-value"
           >
             —
           </span>
@@ -770,8 +831,8 @@
         class="offline-note"
       >
         You're offline. Your report will be saved on
-        this phone and sent automatically when the
-        connection returns.
+        this phone and sent automatically when you're
+        back online.
       </div>
 
 
@@ -779,16 +840,22 @@
         id="status"
         class="status"
       >
-        PREPARING PHOTO FOR UPLOAD…
+        Optimising photo…
       </div>
 
 
+      <div
+        id="technicalError"
+        class="technical-error"
+      ></div>
+
+
       <button
-        class="primary"
         id="sendButton"
+        class="primary"
         disabled
       >
-        PREPARING PHOTO FOR UPLOAD…
+        OPTIMISING PHOTO…
       </button>
 
     </section>
@@ -803,39 +870,31 @@
       class="screen"
     >
 
-      <div class="success">
-
-        <div class="success-mark">
-          ✓
-        </div>
-
-        <h2>
-          Report<br />
-          received.
-        </h2>
-
-        <p>
-          Thank you for making our streets visible.
-        </p>
-
-        <button
-          class="primary"
-          id="againButton"
-        >
-          REPORT ANOTHER ROAD
-        </button>
-
+      <div class="success-mark">
+        ✓
       </div>
+
+      <h1>
+        Report<br>
+        received.
+      </h1>
+
+      <p>
+        Thank you for making our streets visible.
+      </p>
+
+      <button
+        id="againButton"
+        class="primary"
+      >
+        REPORT ANOTHER ROAD
+      </button>
 
     </section>
 
 
   </main>
 
-
-  <!-- ===================================================
-       FOOTER
-  ==================================================== -->
 
   <footer>
     ROADIES / INDIA
@@ -848,19 +907,15 @@
 <script>
 
 /* ========================================================
-   ROADIES CONFIGURATION
-   ======================================================== */
+   SUPABASE
+======================================================== */
 
 const SUPABASE_URL =
   "https://rdxavtxfifvuwrcnsga.supabase.co";
 
 
 /*
-  IMPORTANT:
-
-  Paste your sb_publishable_... key below.
-
-  NEVER paste an sb_secret_... key here.
+  Paste ONLY your sb_publishable_... key here.
 */
 
 const SUPABASE_PUBLISHABLE_KEY =
@@ -872,10 +927,8 @@ const STORAGE_BUCKET =
 
 
 /* ========================================================
-   APP STATE
-   ======================================================== */
-
-let originalFile = null;
+   STATE
+======================================================== */
 
 let compressedBlob = null;
 
@@ -883,20 +936,20 @@ let latitude = null;
 
 let longitude = null;
 
+let digipin = null;
+
+let sendState = "optimising";
+
 
 /* ========================================================
-   DOM
-   ======================================================== */
+   ELEMENTS
+======================================================== */
 
 const fileInput =
-  document.getElementById(
-    "fileInput"
-  );
+  document.getElementById("fileInput");
 
 const preview =
-  document.getElementById(
-    "preview"
-  );
+  document.getElementById("preview");
 
 const cameraPlaceholder =
   document.getElementById(
@@ -923,6 +976,11 @@ const statusEl =
     "status"
   );
 
+const technicalError =
+  document.getElementById(
+    "technicalError"
+  );
+
 const locationText =
   document.getElementById(
     "locationText"
@@ -938,6 +996,16 @@ const photoSize =
     "photoSize"
   );
 
+const digipinRow =
+  document.getElementById(
+    "digipinRow"
+  );
+
+const digipinText =
+  document.getElementById(
+    "digipinText"
+  );
+
 const commentInput =
   document.getElementById(
     "comment"
@@ -950,8 +1018,8 @@ const offlineNote =
 
 
 /* ========================================================
-   SCREEN NAVIGATION
-   ======================================================== */
+   NAVIGATION
+======================================================== */
 
 function showScreen(name) {
 
@@ -973,8 +1041,8 @@ function showScreen(name) {
 
 
 /* ========================================================
-   HOME → CAMERA
-   ======================================================== */
+   HOME
+======================================================== */
 
 document
   .getElementById("startButton")
@@ -991,8 +1059,8 @@ document
 
 
 /* ========================================================
-   OPEN CAMERA
-   ======================================================== */
+   CAMERA
+======================================================== */
 
 photoButton.addEventListener(
   "click",
@@ -1004,25 +1072,28 @@ photoButton.addEventListener(
 );
 
 
-/* ========================================================
-   RETAKE
-   ======================================================== */
-
 retakeButton.addEventListener(
   "click",
   () => {
 
     fileInput.value = "";
 
-    fileInput.click();
+    resetCurrentReport();
+
+    showScreen("camera");
+
+    setTimeout(
+      () => fileInput.click(),
+      50
+    );
 
   }
 );
 
 
 /* ========================================================
-   PHOTO SELECTED
-   ======================================================== */
+   PHOTO
+======================================================== */
 
 fileInput.addEventListener(
   "change",
@@ -1036,19 +1107,38 @@ fileInput.addEventListener(
     }
 
 
-    originalFile = file;
-
     compressedBlob = null;
 
+    sendState =
+      "optimising";
 
-    /*
-      Immediately disable SEND PHOTO.
-    */
 
-    sendButton.disabled = true;
+    sendButton.disabled =
+      true;
 
     sendButton.textContent =
       "OPTIMISING PHOTO…";
+
+
+    clearError();
+
+
+    photoSize.textContent =
+      "Optimising…";
+
+
+    locationText.textContent =
+      "Finding…";
+
+
+    gpsText.textContent =
+      "—";
+
+
+    digipin = null;
+
+    digipinRow.style.display =
+      "none";
 
 
     statusEl.className =
@@ -1058,19 +1148,11 @@ fileInput.addEventListener(
       "Optimising photo…";
 
 
-    photoSize.textContent =
-      "Optimising…";
-
-
-    /*
-      Show review screen immediately.
-    */
-
     showScreen("review");
 
 
     /*
-      Start GPS at the same time.
+      GPS starts immediately.
     */
 
     getLocation();
@@ -1078,17 +1160,9 @@ fileInput.addEventListener(
 
     try {
 
-      /*
-        Compress the original image.
-      */
-
       compressedBlob =
         await compressImage(file);
 
-
-      /*
-        Validate compression result.
-      */
 
       if (
         !compressedBlob ||
@@ -1096,23 +1170,20 @@ fileInput.addEventListener(
       ) {
 
         throw new Error(
-          "Compression produced an empty file."
+          "Photo compression failed."
         );
 
       }
 
 
-      /*
-        Create preview.
-      */
-
-      const previewUrl =
+      const url =
         URL.createObjectURL(
           compressedBlob
         );
 
+
       preview.src =
-        previewUrl;
+        url;
 
       preview.style.display =
         "block";
@@ -1121,10 +1192,6 @@ fileInput.addEventListener(
         "none";
 
 
-      /*
-        Update UI.
-      */
-
       photoSize.textContent =
         formatBytes(
           compressedBlob.size
@@ -1132,9 +1199,11 @@ fileInput.addEventListener(
 
 
       /*
-        PHOTO IS NOW READY.
-        Activate the CTA.
+        Photo is now genuinely ready.
       */
+
+      sendState =
+        "ready";
 
       sendButton.disabled =
         false;
@@ -1152,14 +1221,14 @@ fileInput.addEventListener(
 
     } catch (error) {
 
-      console.error(
-        "Photo optimisation failed:",
-        error
-      );
+      console.error(error);
 
 
-      compressedBlob = null;
+      compressedBlob =
+        null;
 
+      sendState =
+        "optimising";
 
       sendButton.disabled =
         true;
@@ -1174,10 +1243,6 @@ fileInput.addEventListener(
       statusEl.textContent =
         "Could not optimise photo. Please retake it.";
 
-
-      photoSize.textContent =
-        "Failed";
-
     }
 
   }
@@ -1186,24 +1251,13 @@ fileInput.addEventListener(
 
 /* ========================================================
    IMAGE COMPRESSION
-   ======================================================== */
+======================================================== */
 
 async function compressImage(file) {
-
-  /*
-    createImageBitmap is fast on modern phones.
-  */
 
   const bitmap =
     await createImageBitmap(file);
 
-
-  /*
-    Keep images reasonably small.
-
-    1280px is enough for road documentation
-    while keeping uploads fast.
-  */
 
   const MAX_WIDTH =
     1280;
@@ -1247,13 +1301,13 @@ async function compressImage(file) {
     height;
 
 
-  const context =
+  const ctx =
     canvas.getContext(
       "2d"
     );
 
 
-  context.drawImage(
+  ctx.drawImage(
     bitmap,
     0,
     0,
@@ -1262,44 +1316,26 @@ async function compressImage(file) {
   );
 
 
-  /*
-    JPEG gives us a small,
-    universally supported image.
-  */
-
-  const blob =
-    await new Promise(
-      resolve => {
-
-        canvas.toBlob(
-          resolve,
-          "image/jpeg",
-          0.68
-        );
-
-      }
-    );
-
-
   bitmap.close();
 
 
-  /*
-    Extra protection:
-    if image somehow remains huge,
-    compress again.
-  */
+  let blob =
+    await canvasToBlob(
+      canvas,
+      .68
+    );
+
 
   if (
-    blob &&
     blob.size >
     900 * 1024
   ) {
 
-    return await compressAgain(
-      canvas,
-      0.52
-    );
+    blob =
+      await canvasToBlob(
+        canvas,
+        .52
+      );
 
   }
 
@@ -1309,7 +1345,7 @@ async function compressImage(file) {
 }
 
 
-function compressAgain(
+function canvasToBlob(
   canvas,
   quality
 ) {
@@ -1318,7 +1354,7 @@ function compressAgain(
     resolve => {
 
       canvas.toBlob(
-        resolve,
+        blob => resolve(blob),
         "image/jpeg",
         quality
       );
@@ -1330,8 +1366,274 @@ function compressAgain(
 
 
 /* ========================================================
+   OFFICIAL DIGIPIN
+======================================================== */
+
+/*
+  Based on the final DIGIPIN programming logic
+  published by India's Department of Posts.
+
+  Official bounding box:
+
+  Latitude:
+  2.5 → 38.5
+
+  Longitude:
+  63.5 → 99.5
+
+  Official 4x4 label grid:
+
+  F C 9 8
+  J 3 2 7
+  K 4 5 6
+  L M P T
+
+  DIGIPIN is a 10-character location code.
+*/
+
+function getDIGIPIN(
+  lat,
+  lon
+) {
+
+  const L = [
+    ["F", "C", "9", "8"],
+    ["J", "3", "2", "7"],
+    ["K", "4", "5", "6"],
+    ["L", "M", "P", "T"]
+  ];
+
+
+  let MinLat =
+    2.5;
+
+  let MaxLat =
+    38.5;
+
+  let MinLon =
+    63.5;
+
+  let MaxLon =
+    99.5;
+
+
+  const LatDivBy =
+    4;
+
+  const LonDivBy =
+    4;
+
+
+  if (
+    lat < MinLat ||
+    lat > MaxLat ||
+    lon < MinLon ||
+    lon > MaxLon
+  ) {
+
+    return null;
+
+  }
+
+
+  let result = "";
+
+
+  for (
+    let level = 1;
+    level <= 10;
+    level++
+  ) {
+
+    const LatDivDeg =
+      (
+        MaxLat -
+        MinLat
+      ) /
+      LatDivBy;
+
+
+    const LonDivDeg =
+      (
+        MaxLon -
+        MinLon
+      ) /
+      LonDivBy;
+
+
+    let row = 0;
+
+    let column = 0;
+
+
+    /*
+      Find latitude row.
+      North is row 0.
+    */
+
+    let nextMaxLat =
+      MaxLat;
+
+    let nextMinLat =
+      MaxLat -
+      LatDivDeg;
+
+
+    for (
+      let x = 0;
+      x < LatDivBy;
+      x++
+    ) {
+
+      /*
+        Final boundary handling.
+      */
+
+      if (
+        (
+          lat >= nextMinLat &&
+          lat < nextMaxLat
+        ) ||
+        (
+          lat === MaxLat &&
+          x === 0
+        )
+      ) {
+
+        row = x;
+
+        break;
+
+      }
+
+
+      nextMaxLat =
+        nextMinLat;
+
+      nextMinLat =
+        nextMaxLat -
+        LatDivDeg;
+
+    }
+
+
+    /*
+      Find longitude column.
+      West is column 0.
+    */
+
+    let nextMinLon =
+      MinLon;
+
+    let nextMaxLon =
+      MinLon +
+      LonDivDeg;
+
+
+    for (
+      let x = 0;
+      x < LonDivBy;
+      x++
+    ) {
+
+      if (
+        (
+          lon >= nextMinLon &&
+          lon < nextMaxLon
+        ) ||
+        (
+          lon === MaxLon &&
+          x === 3
+        )
+      ) {
+
+        column = x;
+
+        break;
+
+      }
+
+
+      nextMinLon =
+        nextMaxLon;
+
+      nextMaxLon =
+        nextMinLon +
+        LonDivDeg;
+
+    }
+
+
+    result +=
+      L[row][column];
+
+
+    /*
+      Display separators are NOT part
+      of the database value.
+
+      We keep the actual DIGIPIN as
+      10 continuous characters.
+    */
+
+
+    /*
+      Narrow the bounding box for
+      the next level.
+    */
+
+    MinLat =
+      nextMinLat;
+
+    MaxLat =
+      nextMaxLat;
+
+    MinLon =
+      nextMinLon;
+
+    MaxLon =
+      nextMaxLon;
+
+  }
+
+
+  return result;
+
+}
+
+
+/* ========================================================
+   DISPLAY DIGIPIN
+======================================================== */
+
+function formatDIGIPIN(
+  pin
+) {
+
+  if (
+    !pin ||
+    pin.length !== 10
+  ) {
+
+    return "—";
+
+  }
+
+
+  return (
+    pin.slice(0, 3) +
+    " " +
+    pin.slice(3, 6) +
+    " " +
+    pin.slice(6, 10)
+  );
+
+}
+
+
+/* ========================================================
    GPS
-   ======================================================== */
+======================================================== */
 
 function getLocation() {
 
@@ -1341,6 +1643,10 @@ function getLocation() {
 
   gpsText.textContent =
     "—";
+
+
+  digipinRow.style.display =
+    "none";
 
 
   if (
@@ -1375,6 +1681,30 @@ function getLocation() {
         ", " +
         longitude.toFixed(5);
 
+
+      /*
+        Generate DIGIPIN locally.
+      */
+
+      digipin =
+        getDIGIPIN(
+          latitude,
+          longitude
+        );
+
+
+      if (digipin) {
+
+        digipinText.textContent =
+          formatDIGIPIN(
+            digipin
+          );
+
+        digipinRow.style.display =
+          "flex";
+
+      }
+
     },
 
 
@@ -1392,22 +1722,26 @@ function getLocation() {
       longitude =
         null;
 
+      digipin =
+        null;
+
 
       locationText.textContent =
         "Location unavailable";
 
-
       gpsText.textContent =
         "—";
+
+
+      digipinRow.style.display =
+        "none";
 
     },
 
 
     {
       enableHighAccuracy: false,
-
       timeout: 8000,
-
       maximumAge: 60000
     }
 
@@ -1417,28 +1751,8 @@ function getLocation() {
 
 
 /* ========================================================
-   DIGIPIN
-   ======================================================== */
-
-/*
-  Deliberately empty for now.
-
-  We will connect the official DIGIPIN
-  implementation later.
-
-  DO NOT invent a DIGIPIN from coordinates.
-*/
-
-function getDIGIPIN() {
-
-  return null;
-
-}
-
-
-/* ========================================================
-   SUPABASE HEADERS
-   ======================================================== */
+   SUPABASE
+======================================================== */
 
 function supabaseHeaders(
   extra = {}
@@ -1458,15 +1772,11 @@ function supabaseHeaders(
 
 /* ========================================================
    UPLOAD PHOTO
-   ======================================================== */
+======================================================== */
 
 async function uploadPhoto(
   blob
 ) {
-
-  /*
-    Every photo gets a unique path.
-  */
 
   const filename =
     crypto.randomUUID() +
@@ -1491,7 +1801,8 @@ async function uploadPhoto(
       url,
       {
 
-        method: "POST",
+        method:
+          "POST",
 
         headers:
           supabaseHeaders({
@@ -1515,13 +1826,15 @@ async function uploadPhoto(
     !response.ok
   ) {
 
-    const errorText =
+    const body =
       await response.text();
 
 
     throw new Error(
-      "Photo upload failed: " +
-      errorText
+      "Storage " +
+      response.status +
+      ": " +
+      body
     );
 
   }
@@ -1533,25 +1846,13 @@ async function uploadPhoto(
 
 
 /* ========================================================
-   CREATE DATABASE REPORT
-   ======================================================== */
+   CREATE REPORT
+======================================================== */
 
 async function createReport(
   photoPath,
   comment
 ) {
-
-  /*
-    Notice:
-
-    We intentionally DO NOT send:
-
-      created_at
-      photo_expires_at
-
-    Supabase/Postgres will create those
-    automatically using the database defaults.
-  */
 
   const report = {
 
@@ -1561,11 +1862,17 @@ async function createReport(
     longitude:
       longitude,
 
+    /*
+      Continuous 10-character
+      DIGIPIN in database.
+    */
+
     digipin:
-      getDIGIPIN(),
+      digipin,
 
     comment:
-      comment || null,
+      comment ||
+      null,
 
     photo_url:
       photoPath,
@@ -1582,7 +1889,8 @@ async function createReport(
       "/rest/v1/reports",
       {
 
-        method: "POST",
+        method:
+          "POST",
 
         headers:
           supabaseHeaders({
@@ -1608,13 +1916,15 @@ async function createReport(
     !response.ok
   ) {
 
-    const errorText =
+    const body =
       await response.text();
 
 
     throw new Error(
-      "Report creation failed: " +
-      errorText
+      "Database " +
+      response.status +
+      ": " +
+      body
     );
 
   }
@@ -1624,7 +1934,7 @@ async function createReport(
 
 /* ========================================================
    SEND PHOTO
-   ======================================================== */
+======================================================== */
 
 sendButton.addEventListener(
   "click",
@@ -1632,13 +1942,33 @@ sendButton.addEventListener(
 
 
     /*
-      Safety check.
-
-      The button should never be active
-      without an optimised photo.
+      Failed submission:
+      TRY AGAIN means camera.
     */
 
     if (
+      sendState ===
+      "error"
+    ) {
+
+      resetCurrentReport();
+
+      showScreen(
+        "camera"
+      );
+
+      return;
+
+    }
+
+
+    /*
+      Don't send until
+      optimization is complete.
+    */
+
+    if (
+      sendState !== "ready" ||
       !compressedBlob
     ) {
 
@@ -1648,10 +1978,7 @@ sendButton.addEventListener(
 
 
     /*
-      GPS isn't ready yet.
-
-      Don't fail.
-      Just ask the user to wait.
+      GPS must exist.
     */
 
     if (
@@ -1669,51 +1996,14 @@ sendButton.addEventListener(
       getLocation();
 
 
-      /*
-        Give the GPS a moment,
-        then check again.
-      */
-
-      setTimeout(
-        () => {
-
-          if (
-            latitude !== null &&
-            longitude !== null
-          ) {
-
-            sendButton.click();
-
-          } else {
-
-            statusEl.className =
-              "status error";
-
-            statusEl.textContent =
-              "Please allow location access.";
-
-          }
-
-        },
-        1200
-      );
-
-
       return;
 
     }
 
 
-    const comment =
-      commentInput
-        .value
-        .trim();
+    sendState =
+      "sending";
 
-
-    /*
-      Disable button immediately
-      to prevent double submissions.
-    */
 
     sendButton.disabled =
       true;
@@ -1729,12 +2019,19 @@ sendButton.addEventListener(
       "Uploading photo…";
 
 
+    clearError();
+
+
+    const comment =
+      commentInput
+        .value
+        .trim();
+
+
     try {
 
-
       /*
-        STEP 1
-        Upload photo.
+        Upload.
       */
 
       const photoPath =
@@ -1744,8 +2041,7 @@ sendButton.addEventListener(
 
 
       /*
-        STEP 2
-        Create report.
+        Save report.
       */
 
       statusEl.textContent =
@@ -1759,33 +2055,26 @@ sendButton.addEventListener(
 
 
       /*
-        STEP 3
-        Success.
+        Done.
       */
 
-      statusEl.textContent =
-        "";
-
+      resetCurrentReport();
 
       showScreen(
         "success"
       );
 
 
-      resetCurrentReport();
-
-
     } catch (error) {
 
       console.error(
-        "Send failed:",
+        "ROADIES ERROR:",
         error
       );
 
 
       /*
-        If the phone is offline,
-        save locally.
+        Offline queue.
       */
 
       if (
@@ -1797,16 +2086,8 @@ sendButton.addEventListener(
           await saveOfflineReport();
 
 
-          offlineNote.classList.add(
-            "show"
-          );
-
-
-          statusEl.className =
-            "status";
-
-          statusEl.textContent =
-            "Saved. We'll send it when you're online.";
+          sendState =
+            "saved";
 
 
           sendButton.disabled =
@@ -1816,6 +2097,21 @@ sendButton.addEventListener(
             "SAVED OFFLINE";
 
 
+          statusEl.className =
+            "status";
+
+
+          statusEl.textContent =
+            "Saved. We'll send it when you're online.";
+
+
+          offlineNote.classList.add(
+            "show"
+          );
+
+
+          return;
+
         } catch (
           offlineError
         ) {
@@ -1824,16 +2120,42 @@ sendButton.addEventListener(
             offlineError
           );
 
-
-          showSendError();
-
         }
 
-      } else {
-
-        showSendError();
-
       }
+
+
+      /*
+        Online failure.
+        Do NOT retry upload.
+      */
+
+      sendState =
+        "error";
+
+
+      sendButton.disabled =
+        false;
+
+      sendButton.textContent =
+        "TRY AGAIN";
+
+
+      statusEl.className =
+        "status error";
+
+      statusEl.textContent =
+        "Something went wrong. Try again.";
+
+
+      technicalError.textContent =
+        error.message ||
+        String(error);
+
+
+      technicalError.classList.add(
+        "show"
+      );
 
     }
 
@@ -1842,30 +2164,24 @@ sendButton.addEventListener(
 
 
 /* ========================================================
-   SEND ERROR
-   ======================================================== */
+   ERROR
+======================================================== */
 
-function showSendError() {
+function clearError() {
 
-  sendButton.disabled =
-    false;
+  technicalError.textContent =
+    "";
 
-  sendButton.textContent =
-    "SEND PHOTO";
-
-
-  statusEl.className =
-    "status error";
-
-  statusEl.textContent =
-    "Something went wrong. Please try again.";
+  technicalError.classList.remove(
+    "show"
+  );
 
 }
 
 
 /* ========================================================
-   INDEXED DB
-   ======================================================== */
+   OFFLINE STORAGE
+======================================================== */
 
 const DB_NAME =
   "roadies-db";
@@ -1908,7 +2224,8 @@ function openDatabase() {
             db.createObjectStore(
               STORE_NAME,
               {
-                keyPath: "id"
+                keyPath:
+                  "id"
               }
             );
 
@@ -1918,23 +2235,15 @@ function openDatabase() {
 
 
       request.onsuccess =
-        () => {
-
-          resolve(
-            request.result
-          );
-
-        };
+        () => resolve(
+          request.result
+        );
 
 
       request.onerror =
-        () => {
-
-          reject(
-            request.error
-          );
-
-        };
+        () => reject(
+          request.error
+        );
 
     }
   );
@@ -1942,17 +2251,13 @@ function openDatabase() {
 }
 
 
-/* ========================================================
-   SAVE OFFLINE
-   ======================================================== */
-
 async function saveOfflineReport() {
 
   const db =
     await openDatabase();
 
 
-  const pendingReport = {
+  const report = {
 
     id:
       crypto.randomUUID(),
@@ -1962,6 +2267,9 @@ async function saveOfflineReport() {
 
     longitude:
       longitude,
+
+    digipin:
+      digipin,
 
     comment:
       commentInput
@@ -1996,7 +2304,7 @@ async function saveOfflineReport() {
           STORE_NAME
         )
         .put(
-          pendingReport
+          report
         );
 
 
@@ -2005,20 +2313,15 @@ async function saveOfflineReport() {
 
 
       transaction.onerror =
-        () =>
-          reject(
-            transaction.error
-          );
+        () => reject(
+          transaction.error
+        );
 
     }
   );
 
 }
 
-
-/* ========================================================
-   GET OFFLINE REPORTS
-   ======================================================== */
 
 async function getOfflineReports() {
 
@@ -2045,33 +2348,21 @@ async function getOfflineReports() {
 
 
       request.onsuccess =
-        () => {
-
-          resolve(
-            request.result || []
-          );
-
-        };
+        () => resolve(
+          request.result || []
+        );
 
 
       request.onerror =
-        () => {
-
-          reject(
-            request.error
-          );
-
-        };
+        () => reject(
+          request.error
+        );
 
     }
   );
 
 }
 
-
-/* ========================================================
-   DELETE OFFLINE REPORT
-   ======================================================== */
 
 async function deleteOfflineReport(
   id
@@ -2106,10 +2397,9 @@ async function deleteOfflineReport(
 
 
       transaction.onerror =
-        () =>
-          reject(
-            transaction.error
-          );
+        () => reject(
+          transaction.error
+        );
 
     }
   );
@@ -2117,18 +2407,12 @@ async function deleteOfflineReport(
 }
 
 
-/* ========================================================
-   RETRY OFFLINE REPORTS
-   ======================================================== */
-
 async function flushOfflineReports() {
 
   if (
     !navigator.onLine
   ) {
-
     return;
-
   }
 
 
@@ -2147,22 +2431,6 @@ async function flushOfflineReports() {
   }
 
 
-  if (
-    reports.length === 0
-  ) {
-
-    return;
-
-  }
-
-
-  console.log(
-    "Retrying",
-    reports.length,
-    "offline report(s)"
-  );
-
-
   for (
     const report
     of reports
@@ -2170,21 +2438,15 @@ async function flushOfflineReports() {
 
     try {
 
-      /*
-        Restore the original GPS
-        attached to the report.
-      */
-
       latitude =
         report.latitude;
 
       longitude =
         report.longitude;
 
+      digipin =
+        report.digipin;
 
-      /*
-        Upload saved photo.
-      */
 
       const photoPath =
         await uploadPhoto(
@@ -2192,29 +2454,14 @@ async function flushOfflineReports() {
         );
 
 
-      /*
-        Create report.
-      */
-
       await createReport(
         photoPath,
         report.comment
       );
 
 
-      /*
-        Remove local copy only
-        after successful upload
-        AND database insertion.
-      */
-
       await deleteOfflineReport(
         report.id
-      );
-
-
-      console.log(
-        "Offline report sent."
       );
 
 
@@ -2225,12 +2472,6 @@ async function flushOfflineReports() {
         error
       );
 
-
-      /*
-        Keep it in IndexedDB.
-        It will retry later.
-      */
-
     }
 
   }
@@ -2238,50 +2479,17 @@ async function flushOfflineReports() {
 }
 
 
-/* ========================================================
-   ONLINE EVENT
-   ======================================================== */
-
 window.addEventListener(
   "online",
-  () => {
-
-    flushOfflineReports();
-
-  }
+  flushOfflineReports
 );
 
 
 /* ========================================================
-   SUCCESS → NEW REPORT
-   ======================================================== */
-
-document
-  .getElementById(
-    "againButton"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-      resetCurrentReport();
-
-      showScreen(
-        "camera"
-      );
-
-    }
-  );
-
-
-/* ========================================================
    RESET
-   ======================================================== */
+======================================================== */
 
 function resetCurrentReport() {
-
-  originalFile =
-    null;
 
   compressedBlob =
     null;
@@ -2291,6 +2499,12 @@ function resetCurrentReport() {
 
   longitude =
     null;
+
+  digipin =
+    null;
+
+  sendState =
+    "optimising";
 
 
   fileInput.value =
@@ -2321,23 +2535,23 @@ function resetCurrentReport() {
 
 
   locationText.textContent =
-    "Waiting…";
+    "Finding…";
 
 
   gpsText.textContent =
     "—";
 
 
+  digipinText.textContent =
+    "—";
+
+
+  digipinRow.style.display =
+    "none";
+
+
   commentInput.value =
     "";
-
-
-  statusEl.className =
-    "status";
-
-
-  statusEl.textContent =
-    "Optimising photo…";
 
 
   offlineNote.classList.remove(
@@ -2345,9 +2559,18 @@ function resetCurrentReport() {
   );
 
 
+  statusEl.className =
+    "status";
+
+  statusEl.textContent =
+    "Optimising photo…";
+
+
+  clearError();
+
+
   sendButton.disabled =
     true;
-
 
   sendButton.textContent =
     "OPTIMISING PHOTO…";
@@ -2356,8 +2579,28 @@ function resetCurrentReport() {
 
 
 /* ========================================================
-   FORMAT FILE SIZE
-   ======================================================== */
+   SUCCESS
+======================================================== */
+
+document
+  .getElementById("againButton")
+  .addEventListener(
+    "click",
+    () => {
+
+      resetCurrentReport();
+
+      showScreen(
+        "camera"
+      );
+
+    }
+  );
+
+
+/* ========================================================
+   FILE SIZE
+======================================================== */
 
 function formatBytes(
   bytes
@@ -2402,8 +2645,8 @@ function formatBytes(
 
 
 /* ========================================================
-   STARTUP
-   ======================================================== */
+   START
+======================================================== */
 
 flushOfflineReports();
 
