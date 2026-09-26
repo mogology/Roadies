@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="theme-color" content="#f3efe8">
+
+<title>Roadies</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --paper:#f3efe8;
+  --ink:#171717;
+  --muted:#77736c;
+  --line:#d8d2c8;
+}
+
+html,body {
+  margin:0;
+  min-height:100%;
+  background:var(--paper);
+  color:var(--ink);
+}
+
+body {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+}
+
+.app {
+  min-height:100svh;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+}
+
+.header {
+  display:flex;
+  justify-content:space-between;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--line);
+
+  font-size:10px;
+  letter-spacing:.18em;
+}
+
+.hero {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:40px 0;
+}
+
+.kicker {
+  font-size:10px;
+  letter-spacing:.18em;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+h1 {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight:400;
+
+  font-size:
+    clamp(58px,17vw,100px);
+
+  line-height:.86;
+
+  letter-spacing:-.065em;
+
+  margin:0 0 30px;
+}
+
+.copy {
+  max-width:290px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:18px;
+  line-height:1.4;
+
+  color:var(--muted);
+}
+
+.report {
+  width:100%;
+
+  border:0;
+
+  background:var(--ink);
+  color:var(--paper);
+
+  padding:20px;
+
+  min-height:64px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  font-size:11px;
+  letter-spacing:.1em;
+
+  cursor:pointer;
+}
+
+.arrow {
+  font-size:24px;
+}
+
+.footer {
+  padding-top:20px;
+
+  display:flex;
+  justify-content:space-between;
+
+  color:var(--muted);
+
+  font-size:9px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.camera {
+  display:none;
+  min-height:100svh;
+
+  flex-direction:column;
+}
+
+.camera-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:20px 0;
+}
+
+.close {
+  border:0;
+  background:none;
+  font-size:28px;
+}
+
+.camera-box {
+  flex:1;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#242424;
+
+  margin:10px -24px;
+}
+
+.camera-box label {
+  color:white;
+  text-align:center;
+  font-family:Georgia,serif;
+  font-size:25px;
+  padding:30px;
+}
+
+.camera-box input {
+  display:none;
+}
+
+.camera-note {
+  color:var(--muted);
+  font-size:11px;
+  padding:15px 0;
+}
+
+.send {
+  border:0;
+  background:var(--ink);
+  color:white;
+
+  padding:20px;
+
+  font-size:11px;
+  letter-spacing:.1em;
+}
+
+.done {
+  display:none;
+
+  min-height:100svh;
+
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+}
+
+.check {
+  width:80px;
+  height:80px;
+
+  border:1px solid var(--ink);
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  font-size:30px;
+
+  margin-bottom:30px;
+}
+
+.done h2 {
+  font-family:Georgia,serif;
+  font-size:45px;
+  font-weight:400;
+  margin:0 0 15px;
+}
+
+.done p {
+  color:var(--muted);
+  max-width:270px;
+  line-height:1.5;
+}
+
+.again {
+  margin-top:30px;
+
+  border:0;
+  background:var(--ink);
+  color:white;
+
+  padding:18px 24px;
+
+  font-size:10px;
+  letter-spacing:.1em;
+}
+</style>
+</head>
+
+<body>
+
+<main class="app" id="home">
+
+  <header class="header">
+    <span>ROADIES</span>
+    <span>INDIA / 01</span>
+  </header>
+
+  <section class="hero">
+
+    <div class="kicker">
+      THE PEOPLE'S ROAD REPORT
+    </div>
+
+    <h1>
+      Better<br>
+      roads<br>
+      begin<br>
+      here.
+    </h1>
+
+    <p class="copy">
+      See a broken road?
+      Photograph it.
+      We'll take care of the rest.
+    </p>
+
+  </section>
+
+  <button class="report" id="reportButton">
+    <span>REPORT A BROKEN ROAD</span>
+    <span class="arrow">→</span>
+  </button>
+
+  <footer class="footer">
+    <span>Anonymous</span>
+    <span>GPS located</span>
+    <span>Simple</span>
+  </footer>
+
+</main>
+
+
+<section class="app camera" id="camera">
+
+  <div class="camera-top">
+    <button class="close" id="closeButton">×</button>
+    <span>ROADIES</span>
+    <span>PHOTO</span>
+  </div>
+
+  <div class="camera-box">
+
+    <label>
+      Photograph<br>
+      the broken road.
+
+      <input
+        id="photo"
+        type="file"
+        accept="image/*"
+        capture="environment">
+    </label>
+
+  </div>
+
+  <div class="camera-note" id="status">
+    Your location will be added automatically.
+  </div>
+
+  <button
+    class="send"
+    id="sendButton"
+    disabled>
+
+    TAKE A PHOTO
+
+  </button>
+
+</section>
+
+
+<section class="done" id="done">
+
+  <div class="check">✓</div>
+
+  <h2>
+    Report<br>
+    received.
+  </h2>
+
+  <p>
+    Thank you for making our streets visible.
+  </p>
+
+  <button
+    class="again"
+    id="againButton">
+
+    REPORT ANOTHER
+
+  </button>
+
+</section>
+
+
+<script>
+
+const home =
+  document.getElementById("home");
+
+const camera =
+  document.getElementById("camera");
+
+const done =
+  document.getElementById("done");
+
+const reportButton =
+  document.getElementById("reportButton");
+
+const closeButton =
+  document.getElementById("closeButton");
+
+const photo =
+  document.getElementById("photo");
+
+const sendButton =
+  document.getElementById("sendButton");
+
+const status =
+  document.getElementById("status");
+
+const againButton =
+  document.getElementById("againButton");
+
+
+reportButton.onclick = () => {
+
+  home.style.display = "none";
+  camera.style.display = "flex";
+
+};
+
+
+closeButton.onclick = () => {
+
+  camera.style.display = "none";
+  home.style.display = "flex";
+
+};
+
+
+photo.onchange = async () => {
+
+  if (!photo.files.length) return;
+
+  status.textContent =
+    "Photo ready. Finding location…";
+
+  sendButton.disabled = true;
+
+  if ("geolocation" in navigator) {
+
+    navigator.geolocation.getCurrentPosition(
+
+      () => {
+
+        status.textContent =
+          "Location found. Ready to report.";
+
+        sendButton.disabled = false;
+
+        sendButton.textContent =
+          "SEND REPORT →";
+
+      },
+
+      () => {
+
+        status.textContent =
+          "Location unavailable. Please allow location access.";
+
+      },
+
+      {
+        enableHighAccuracy:false,
+        timeout:7000,
+        maximumAge:60000
+      }
+
+    );
+
+  }
+
+};
+
+
+sendButton.onclick = () => {
+
+  camera.style.display = "none";
+  done.style.display = "flex";
+
+};
+
+
+againButton.onclick = () => {
+
+  location.reload();
+
+};
+
+</script>
+
+</body>
+</html>
