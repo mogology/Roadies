@@ -2,17 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1, viewport-fit=cover"
   />
+
   <meta name="theme-color" content="#ffffff" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default"
+  />
 
   <title>Roadies</title>
 
   <style>
+    /* =====================================================
+       RESET
+    ===================================================== */
+
     * {
       box-sizing: border-box;
     }
@@ -23,247 +32,419 @@
       padding: 0;
       width: 100%;
       min-height: 100%;
-      background: #fff;
-      color: #111;
+      background: #ffffff;
+      color: #111111;
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     button,
-    input,
-    textarea {
+    textarea,
+    input {
       font: inherit;
     }
+
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+
+    /* =====================================================
+       APP
+    ===================================================== */
 
     .app {
       min-height: 100vh;
       min-height: 100svh;
-      background: #fff;
+
       display: flex;
       flex-direction: column;
+
+      background: #ffffff;
     }
 
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
     header {
-      padding: 22px 22px 0;
+      width: 100%;
+
+      padding:
+        calc(22px + env(safe-area-inset-top))
+        22px
+        0;
+
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
     }
 
     .logo {
-      font-family: Georgia, "Times New Roman", serif;
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
       font-size: 23px;
-      letter-spacing: -0.04em;
+      line-height: 1;
+
+      letter-spacing: -0.055em;
     }
 
     .edition {
-      font-size: 10px;
+      font-size: 9px;
       letter-spacing: 0.18em;
-      color: #777;
+      color: #888888;
     }
+
+
+    /* =====================================================
+       MAIN
+    ===================================================== */
 
     main {
       flex: 1;
+
+      width: 100%;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 30px 22px 50px;
+
+      padding:
+        30px
+        22px
+        50px;
     }
 
     .screen {
       width: 100%;
       max-width: 520px;
+
       display: none;
-      animation: appear 0.25s ease;
+
+      animation:
+        screenIn
+        240ms
+        ease
+        both;
     }
 
     .screen.active {
       display: block;
     }
 
-    @keyframes appear {
+    @keyframes screenIn {
       from {
         opacity: 0;
         transform: translateY(8px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
+
+    /* =====================================================
+       HOME
+    ===================================================== */
+
     .hero {
       text-align: center;
     }
 
     .hero-number {
-      font-family: Georgia, "Times New Roman", serif;
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
       font-size: 92px;
       line-height: 0.8;
-      letter-spacing: -0.08em;
+
+      letter-spacing: -0.09em;
+
       margin-bottom: 42px;
     }
 
     h1 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 400;
-      font-size: clamp(40px, 11vw, 72px);
-      line-height: 0.95;
-      letter-spacing: -0.055em;
       margin: 0;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(
+          42px,
+          11vw,
+          72px
+        );
+
+      line-height: 0.94;
+
+      font-weight: 400;
+
+      letter-spacing: -0.06em;
     }
 
     .sub {
-      margin: 20px auto 42px;
+      margin:
+        20px
+        auto
+        42px;
+
       max-width: 320px;
+
       font-size: 14px;
       line-height: 1.55;
-      color: #666;
+
+      color: #666666;
     }
+
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
 
     .primary {
       width: 100%;
-      border: 1px solid #111;
-      background: #111;
-      color: #fff;
+
+      border: 1px solid #111111;
+
+      background: #111111;
+      color: #ffffff;
+
       padding: 19px 20px;
+
       cursor: pointer;
-      letter-spacing: 0.08em;
+
       font-size: 12px;
       font-weight: 700;
-      transition: 0.2s;
+
+      letter-spacing: 0.08em;
+
+      transition:
+        transform 150ms ease,
+        background 150ms ease,
+        color 150ms ease,
+        border-color 150ms ease;
     }
 
-    .primary:active {
-      transform: scale(0.98);
+    .primary:active:not(:disabled) {
+      transform: scale(0.985);
+    }
+
+    .primary:disabled {
+      background: #eeeeee;
+      border-color: #eeeeee;
+      color: #999999;
+
+      cursor: not-allowed;
+
+      transform: none;
     }
 
     .secondary {
       width: 100%;
+
       margin-top: 10px;
-      border: 1px solid #ddd;
-      background: #fff;
-      color: #111;
+
+      border: 1px solid #dddddd;
+
+      background: #ffffff;
+      color: #111111;
+
       padding: 16px;
+
       cursor: pointer;
+
       font-size: 12px;
+
+      transition: background 150ms ease;
     }
+
+    .secondary:active {
+      background: #f5f5f5;
+    }
+
+
+    /* =====================================================
+       CAMERA
+    ===================================================== */
 
     .camera-box {
       width: 100%;
+
       aspect-ratio: 4 / 3;
+
       background: #f5f5f5;
+
       overflow: hidden;
+
       position: relative;
+
       margin-bottom: 18px;
     }
 
     .camera-box img {
       width: 100%;
       height: 100%;
+
       object-fit: cover;
+
       display: none;
     }
 
     .camera-placeholder {
       position: absolute;
+
       inset: 0;
+
       display: flex;
+
       align-items: center;
       justify-content: center;
-      color: #888;
-      font-size: 12px;
-      letter-spacing: 0.08em;
+
+      color: #888888;
+
+      font-size: 11px;
+
+      letter-spacing: 0.12em;
+    }
+
+
+    /* =====================================================
+       REVIEW
+    ===================================================== */
+
+    .review-title {
+      margin-bottom: 28px;
     }
 
     .details {
-      margin: 22px 0;
-      border-top: 1px solid #eee;
+      margin: 25px 0;
+
+      border-top:
+        1px solid #eeeeee;
     }
 
     .detail-row {
       display: flex;
+
+      align-items: center;
       justify-content: space-between;
+
       gap: 20px;
-      padding: 13px 0;
-      border-bottom: 1px solid #eee;
+
+      padding: 14px 0;
+
+      border-bottom:
+        1px solid #eeeeee;
+
       font-size: 12px;
     }
 
     .detail-label {
-      color: #888;
+      color: #888888;
+
+      letter-spacing: 0.05em;
     }
 
     .detail-value {
       text-align: right;
+
+      color: #111111;
     }
 
     textarea {
       width: 100%;
-      min-height: 90px;
+
+      min-height: 88px;
+
       resize: vertical;
-      border: 1px solid #ddd;
-      padding: 14px;
+
+      border:
+        1px solid #dddddd;
+
       outline: none;
-      background: #fff;
-      margin-bottom: 12px;
+
+      background: #ffffff;
+
+      color: #111111;
+
+      padding: 14px;
+
       font-size: 14px;
+
+      line-height: 1.45;
+
+      margin-bottom: 12px;
     }
 
     textarea:focus {
-      border-color: #111;
+      border-color: #111111;
     }
+
+
+    /* =====================================================
+       STATUS
+    ===================================================== */
 
     .status {
       min-height: 20px;
-      margin: 12px 0;
+
+      margin:
+        10px
+        0
+        12px;
+
       text-align: center;
+
       font-size: 12px;
-      color: #777;
+
+      color: #777777;
     }
 
-    .success {
-      text-align: center;
+    .status.success {
+      color: #111111;
     }
 
-    .success-mark {
-      width: 72px;
-      height: 72px;
-      border: 1px solid #111;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 35px;
-      font-size: 27px;
+    .status.error {
+      color: #b00020;
     }
 
-    .success h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 400;
-      font-size: 42px;
-      line-height: 1;
-      letter-spacing: -0.04em;
-      margin: 0;
-    }
 
-    .success p {
-      color: #666;
-      font-size: 14px;
-      line-height: 1.5;
-      max-width: 300px;
-      margin: 18px auto 35px;
-    }
+    /* =====================================================
+       OFFLINE
+    ===================================================== */
 
     .offline-note {
       display: none;
-      padding: 12px;
+
+      padding: 13px;
+
       background: #f5f5f5;
+
+      color: #555555;
+
       font-size: 11px;
+
       line-height: 1.5;
+
       margin-bottom: 12px;
     }
 
@@ -271,318 +452,808 @@
       display: block;
     }
 
-    footer {
-      padding: 0 22px 22px;
+
+    /* =====================================================
+       SUCCESS
+    ===================================================== */
+
+    .success {
       text-align: center;
-      color: #aaa;
+    }
+
+    .success-mark {
+      width: 74px;
+      height: 74px;
+
+      margin:
+        0
+        auto
+        35px;
+
+      border:
+        1px solid #111111;
+
+      border-radius: 50%;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      font-size: 27px;
+    }
+
+    .success h2 {
+      margin: 0;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-weight: 400;
+
+      font-size: 44px;
+
+      line-height: 0.98;
+
+      letter-spacing: -0.055em;
+    }
+
+    .success p {
+      max-width: 300px;
+
+      margin:
+        18px
+        auto
+        35px;
+
+      color: #666666;
+
+      font-size: 14px;
+
+      line-height: 1.5;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+      padding:
+        0
+        22px
+        calc(22px + env(safe-area-inset-bottom));
+
+      text-align: center;
+
+      color: #aaaaaa;
+
       font-size: 9px;
+
       letter-spacing: 0.12em;
     }
+
+
+    /* =====================================================
+       HIDDEN FILE INPUT
+    ===================================================== */
 
     #fileInput {
       display: none;
     }
+
+
+    /* =====================================================
+       SMALL SCREEN
+    ===================================================== */
+
+    @media (max-height: 700px) {
+
+      .hero-number {
+        font-size: 70px;
+        margin-bottom: 28px;
+      }
+
+      .sub {
+        margin-bottom: 28px;
+      }
+
+      main {
+        padding-top: 20px;
+        padding-bottom: 30px;
+      }
+    }
   </style>
 </head>
 
+
 <body>
-  <div class="app">
 
-    <header>
-      <div class="logo">ROADIES</div>
-      <div class="edition">INDIA / 01</div>
-    </header>
+<div class="app">
 
-    <main>
+  <!-- ===================================================
+       HEADER
+  ==================================================== -->
 
-      <!-- HOME -->
-      <section id="home" class="screen active">
-        <div class="hero">
-          <div class="hero-number">01</div>
+  <header>
 
-          <h1>
-            Better roads<br />
-            begin here.
-          </h1>
+    <div class="logo">
+      ROADIES
+    </div>
 
-          <p class="sub">
-            See a broken road?<br />
-            Make it visible.
-          </p>
+    <div class="edition">
+      INDIA / 01
+    </div>
 
-          <button class="primary" id="startButton">
-            REPORT A BROKEN ROAD
-          </button>
+  </header>
+
+
+  <!-- ===================================================
+       MAIN
+  ==================================================== -->
+
+  <main>
+
+
+    <!-- =================================================
+         HOME
+    ================================================== -->
+
+    <section
+      id="home"
+      class="screen active"
+    >
+
+      <div class="hero">
+
+        <div class="hero-number">
+          01
         </div>
-      </section>
+
+        <h1>
+          Better roads<br />
+          begin here.
+        </h1>
+
+        <p class="sub">
+          See a broken road?<br />
+          Make it visible.
+        </p>
+
+        <button
+          class="primary"
+          id="startButton"
+        >
+          REPORT A BROKEN ROAD
+        </button>
+
+      </div>
+
+    </section>
 
 
-      <!-- CAMERA -->
-      <section id="camera" class="screen">
+    <!-- =================================================
+         CAMERA
+    ================================================== -->
 
-        <div class="camera-box">
-          <img id="preview" alt="Road photo preview" />
-          <div class="camera-placeholder" id="cameraPlaceholder">
-            TAKE A PHOTO
-          </div>
-        </div>
+    <section
+      id="camera"
+      class="screen"
+    >
 
-        <input
-          id="fileInput"
-          type="file"
-          accept="image/jpeg,image/png,image/webp,image/*"
-          capture="environment"
+      <div class="camera-box">
+
+        <img
+          id="preview"
+          alt="Road photo preview"
         />
 
-        <button class="primary" id="photoButton">
-          TAKE PHOTO
-        </button>
+        <div
+          id="cameraPlaceholder"
+          class="camera-placeholder"
+        >
+          TAKE A PHOTO
+        </div>
 
-        <button class="secondary" id="retakeButton" style="display:none;">
-          RETAKE
-        </button>
-
-      </section>
+      </div>
 
 
-      <!-- REVIEW -->
-      <section id="review" class="screen">
+      <input
+        id="fileInput"
+        type="file"
+        accept="image/*"
+        capture="environment"
+      />
 
-        <h1>Almost<br />there.</h1>
 
-        <div class="details">
+      <button
+        class="primary"
+        id="photoButton"
+      >
+        TAKE PHOTO
+      </button>
 
-          <div class="detail-row">
-            <span class="detail-label">LOCATION</span>
-            <span class="detail-value" id="locationText">
-              Finding location…
-            </span>
-          </div>
 
-          <div class="detail-row">
-            <span class="detail-label">GPS</span>
-            <span class="detail-value" id="gpsText">
-              —
-            </span>
-          </div>
+      <button
+        class="secondary"
+        id="retakeButton"
+        style="display:none;"
+      >
+        RETAKE PHOTO
+      </button>
 
-          <div class="detail-row">
-            <span class="detail-label">PHOTO</span>
-            <span class="detail-value" id="photoSize">
-              —
-            </span>
-          </div>
+    </section>
+
+
+    <!-- =================================================
+         REVIEW
+    ================================================== -->
+
+    <section
+      id="review"
+      class="screen"
+    >
+
+      <div class="review-title">
+
+        <h1>
+          Almost<br />
+          there.
+        </h1>
+
+      </div>
+
+
+      <div class="details">
+
+        <div class="detail-row">
+
+          <span class="detail-label">
+            PHOTO
+          </span>
+
+          <span
+            class="detail-value"
+            id="photoSize"
+          >
+            Optimising…
+          </span>
 
         </div>
 
-        <textarea
-          id="comment"
-          maxlength="300"
-          placeholder="Anything useful? (optional)"
-        ></textarea>
 
-        <div id="offlineNote" class="offline-note">
-          You're offline. We'll save this report on your phone and send it
-          automatically when you're back online.
+        <div class="detail-row">
+
+          <span class="detail-label">
+            LOCATION
+          </span>
+
+          <span
+            class="detail-value"
+            id="locationText"
+          >
+            Waiting…
+          </span>
+
         </div>
 
-        <div id="status" class="status"></div>
 
-        <button class="primary" id="sendButton">
-          SEND REPORT
+        <div class="detail-row">
+
+          <span class="detail-label">
+            GPS
+          </span>
+
+          <span
+            class="detail-value"
+            id="gpsText"
+          >
+            —
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <textarea
+        id="comment"
+        maxlength="300"
+        placeholder="Anything useful? (optional)"
+      ></textarea>
+
+
+      <div
+        id="offlineNote"
+        class="offline-note"
+      >
+        You're offline. Your report will be saved on
+        this phone and sent automatically when the
+        connection returns.
+      </div>
+
+
+      <div
+        id="status"
+        class="status"
+      >
+        PREPARING PHOTO FOR UPLOAD…
+      </div>
+
+
+      <button
+        class="primary"
+        id="sendButton"
+        disabled
+      >
+        PREPARING PHOTO FOR UPLOAD…
+      </button>
+
+    </section>
+
+
+    <!-- =================================================
+         SUCCESS
+    ================================================== -->
+
+    <section
+      id="success"
+      class="screen"
+    >
+
+      <div class="success">
+
+        <div class="success-mark">
+          ✓
+        </div>
+
+        <h2>
+          Report<br />
+          received.
+        </h2>
+
+        <p>
+          Thank you for making our streets visible.
+        </p>
+
+        <button
+          class="primary"
+          id="againButton"
+        >
+          REPORT ANOTHER ROAD
         </button>
 
-      </section>
+      </div>
+
+    </section>
 
 
-      <!-- SUCCESS -->
-      <section id="success" class="screen">
+  </main>
 
-        <div class="success">
 
-          <div class="success-mark">✓</div>
+  <!-- ===================================================
+       FOOTER
+  ==================================================== -->
 
-          <h2>
-            Report<br />
-            received.
-          </h2>
+  <footer>
+    ROADIES / INDIA
+  </footer>
 
-          <p>
-            Thank you for making our streets visible.
-          </p>
+</div>
 
-          <button class="primary" id="againButton">
-            REPORT ANOTHER ROAD
-          </button>
-
-        </div>
-
-      </section>
-
-    </main>
-
-    <footer>
-      ROADIES / INDIA
-    </footer>
-
-  </div>
 
 
 <script>
-/* =========================================================
-   ROADIES CONFIG
-   ========================================================= */
+
+/* ========================================================
+   ROADIES CONFIGURATION
+   ======================================================== */
 
 const SUPABASE_URL =
   "https://rdxavtxfifvuwrcnsga.supabase.co";
 
+
+/*
+  IMPORTANT:
+
+  Paste your sb_publishable_... key below.
+
+  NEVER paste an sb_secret_... key here.
+*/
+
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_AFElmTasdfqRKSu9kUz6BA_odt416e_";
 
-const STORAGE_BUCKET = "road-report";
+
+const STORAGE_BUCKET =
+  "road-report";
 
 
-/* =========================================================
-   STATE
-   ========================================================= */
+/* ========================================================
+   APP STATE
+   ======================================================== */
 
 let originalFile = null;
+
 let compressedBlob = null;
+
 let latitude = null;
+
 let longitude = null;
 
 
-/* =========================================================
+/* ========================================================
+   DOM
+   ======================================================== */
+
+const fileInput =
+  document.getElementById(
+    "fileInput"
+  );
+
+const preview =
+  document.getElementById(
+    "preview"
+  );
+
+const cameraPlaceholder =
+  document.getElementById(
+    "cameraPlaceholder"
+  );
+
+const photoButton =
+  document.getElementById(
+    "photoButton"
+  );
+
+const retakeButton =
+  document.getElementById(
+    "retakeButton"
+  );
+
+const sendButton =
+  document.getElementById(
+    "sendButton"
+  );
+
+const statusEl =
+  document.getElementById(
+    "status"
+  );
+
+const locationText =
+  document.getElementById(
+    "locationText"
+  );
+
+const gpsText =
+  document.getElementById(
+    "gpsText"
+  );
+
+const photoSize =
+  document.getElementById(
+    "photoSize"
+  );
+
+const commentInput =
+  document.getElementById(
+    "comment"
+  );
+
+const offlineNote =
+  document.getElementById(
+    "offlineNote"
+  );
+
+
+/* ========================================================
    SCREEN NAVIGATION
-   ========================================================= */
+   ======================================================== */
 
 function showScreen(name) {
-  document.querySelectorAll(".screen").forEach(screen => {
-    screen.classList.remove("active");
-  });
 
-  document.getElementById(name).classList.add("active");
+  document
+    .querySelectorAll(".screen")
+    .forEach(screen => {
+
+      screen.classList.remove(
+        "active"
+      );
+
+    });
+
+  document
+    .getElementById(name)
+    .classList.add("active");
+
 }
 
 
-/* =========================================================
-   ELEMENTS
-   ========================================================= */
+/* ========================================================
+   HOME → CAMERA
+   ======================================================== */
 
-const fileInput = document.getElementById("fileInput");
-const preview = document.getElementById("preview");
-const cameraPlaceholder =
-  document.getElementById("cameraPlaceholder");
+document
+  .getElementById("startButton")
+  .addEventListener(
+    "click",
+    () => {
 
-const photoButton =
-  document.getElementById("photoButton");
+      resetCurrentReport();
 
-const retakeButton =
-  document.getElementById("retakeButton");
+      showScreen("camera");
 
-const sendButton =
-  document.getElementById("sendButton");
-
-const statusEl =
-  document.getElementById("status");
-
-const offlineNote =
-  document.getElementById("offlineNote");
+    }
+  );
 
 
-/* =========================================================
-   CAMERA
-   ========================================================= */
+/* ========================================================
+   OPEN CAMERA
+   ======================================================== */
 
-document.getElementById("startButton").onclick = () => {
-  showScreen("camera");
-};
+photoButton.addEventListener(
+  "click",
+  () => {
 
-photoButton.onclick = () => {
-  fileInput.click();
-};
+    fileInput.click();
 
-retakeButton.onclick = () => {
-  fileInput.value = "";
-  fileInput.click();
-};
+  }
+);
 
 
-fileInput.addEventListener("change", async event => {
+/* ========================================================
+   RETAKE
+   ======================================================== */
 
-  const file = event.target.files[0];
+retakeButton.addEventListener(
+  "click",
+  () => {
 
-  if (!file) return;
+    fileInput.value = "";
 
-  originalFile = file;
+    fileInput.click();
 
-  statusEl.textContent = "Preparing photo…";
+  }
+);
 
-  try {
 
-    compressedBlob = await compressImage(file);
+/* ========================================================
+   PHOTO SELECTED
+   ======================================================== */
 
-    const imageUrl =
-      URL.createObjectURL(compressedBlob);
+fileInput.addEventListener(
+  "change",
+  async event => {
 
-    preview.src = imageUrl;
-    preview.style.display = "block";
+    const file =
+      event.target.files[0];
 
-    cameraPlaceholder.style.display = "none";
+    if (!file) {
+      return;
+    }
 
-    photoButton.style.display = "none";
-    retakeButton.style.display = "block";
 
-    document.getElementById("photoSize").textContent =
-      formatBytes(compressedBlob.size);
+    originalFile = file;
+
+    compressedBlob = null;
+
+
+    /*
+      Immediately disable SEND PHOTO.
+    */
+
+    sendButton.disabled = true;
+
+    sendButton.textContent =
+      "OPTIMISING PHOTO…";
+
+
+    statusEl.className =
+      "status";
+
+    statusEl.textContent =
+      "Optimising photo…";
+
+
+    photoSize.textContent =
+      "Optimising…";
+
+
+    /*
+      Show review screen immediately.
+    */
 
     showScreen("review");
 
+
+    /*
+      Start GPS at the same time.
+    */
+
     getLocation();
 
-  } catch (error) {
 
-    console.error(error);
+    try {
 
-    statusEl.textContent =
-      "Could not prepare the photo. Please try again.";
+      /*
+        Compress the original image.
+      */
+
+      compressedBlob =
+        await compressImage(file);
+
+
+      /*
+        Validate compression result.
+      */
+
+      if (
+        !compressedBlob ||
+        compressedBlob.size <= 0
+      ) {
+
+        throw new Error(
+          "Compression produced an empty file."
+        );
+
+      }
+
+
+      /*
+        Create preview.
+      */
+
+      const previewUrl =
+        URL.createObjectURL(
+          compressedBlob
+        );
+
+      preview.src =
+        previewUrl;
+
+      preview.style.display =
+        "block";
+
+      cameraPlaceholder.style.display =
+        "none";
+
+
+      /*
+        Update UI.
+      */
+
+      photoSize.textContent =
+        formatBytes(
+          compressedBlob.size
+        );
+
+
+      /*
+        PHOTO IS NOW READY.
+        Activate the CTA.
+      */
+
+      sendButton.disabled =
+        false;
+
+      sendButton.textContent =
+        "SEND PHOTO";
+
+
+      statusEl.className =
+        "status success";
+
+      statusEl.textContent =
+        "Photo optimised ✓";
+
+
+    } catch (error) {
+
+      console.error(
+        "Photo optimisation failed:",
+        error
+      );
+
+
+      compressedBlob = null;
+
+
+      sendButton.disabled =
+        true;
+
+      sendButton.textContent =
+        "OPTIMISING PHOTO…";
+
+
+      statusEl.className =
+        "status error";
+
+      statusEl.textContent =
+        "Could not optimise photo. Please retake it.";
+
+
+      photoSize.textContent =
+        "Failed";
+
+    }
 
   }
+);
 
-});
 
-
-/* =========================================================
+/* ========================================================
    IMAGE COMPRESSION
-   ========================================================= */
+   ======================================================== */
 
 async function compressImage(file) {
+
+  /*
+    createImageBitmap is fast on modern phones.
+  */
 
   const bitmap =
     await createImageBitmap(file);
 
-  const MAX_WIDTH = 1280;
 
-  let width = bitmap.width;
-  let height = bitmap.height;
+  /*
+    Keep images reasonably small.
 
-  if (width > MAX_WIDTH) {
+    1280px is enough for road documentation
+    while keeping uploads fast.
+  */
+
+  const MAX_WIDTH =
+    1280;
+
+
+  let width =
+    bitmap.width;
+
+  let height =
+    bitmap.height;
+
+
+  if (
+    width >
+    MAX_WIDTH
+  ) {
+
     height =
-      Math.round(height * MAX_WIDTH / width);
+      Math.round(
+        height *
+        MAX_WIDTH /
+        width
+      );
 
-    width = MAX_WIDTH;
+    width =
+      MAX_WIDTH;
+
   }
 
+
   const canvas =
-    document.createElement("canvas");
+    document.createElement(
+      "canvas"
+    );
 
-  canvas.width = width;
-  canvas.height = height;
 
-  const ctx =
-    canvas.getContext("2d");
+  canvas.width =
+    width;
 
-  ctx.drawImage(
+  canvas.height =
+    height;
+
+
+  const context =
+    canvas.getContext(
+      "2d"
+    );
+
+
+  context.drawImage(
     bitmap,
     0,
     0,
@@ -590,44 +1261,99 @@ async function compressImage(file) {
     height
   );
 
-  return new Promise(resolve => {
 
-    canvas.toBlob(
-      blob => resolve(blob),
-      "image/jpeg",
-      0.68
+  /*
+    JPEG gives us a small,
+    universally supported image.
+  */
+
+  const blob =
+    await new Promise(
+      resolve => {
+
+        canvas.toBlob(
+          resolve,
+          "image/jpeg",
+          0.68
+        );
+
+      }
     );
 
-  });
+
+  bitmap.close();
+
+
+  /*
+    Extra protection:
+    if image somehow remains huge,
+    compress again.
+  */
+
+  if (
+    blob &&
+    blob.size >
+    900 * 1024
+  ) {
+
+    return await compressAgain(
+      canvas,
+      0.52
+    );
+
+  }
+
+
+  return blob;
 
 }
 
 
-/* =========================================================
+function compressAgain(
+  canvas,
+  quality
+) {
+
+  return new Promise(
+    resolve => {
+
+      canvas.toBlob(
+        resolve,
+        "image/jpeg",
+        quality
+      );
+
+    }
+  );
+
+}
+
+
+/* ========================================================
    GPS
-   ========================================================= */
+   ======================================================== */
 
 function getLocation() {
-
-  const locationText =
-    document.getElementById("locationText");
-
-  const gpsText =
-    document.getElementById("gpsText");
 
   locationText.textContent =
     "Finding location…";
 
-  if (!navigator.geolocation) {
+
+  gpsText.textContent =
+    "—";
+
+
+  if (
+    !navigator.geolocation
+  ) {
 
     locationText.textContent =
       "GPS unavailable";
 
-    gpsText.textContent =
-      "—";
-
     return;
+
   }
+
 
   navigator.geolocation.getCurrentPosition(
 
@@ -639,8 +1365,10 @@ function getLocation() {
       longitude =
         position.coords.longitude;
 
+
       locationText.textContent =
-        "Location found";
+        "Location found ✓";
+
 
       gpsText.textContent =
         latitude.toFixed(5) +
@@ -649,24 +1377,37 @@ function getLocation() {
 
     },
 
+
     error => {
 
-      console.error(error);
+      console.warn(
+        "GPS error:",
+        error
+      );
 
-      latitude = null;
-      longitude = null;
+
+      latitude =
+        null;
+
+      longitude =
+        null;
+
 
       locationText.textContent =
         "Location unavailable";
+
 
       gpsText.textContent =
         "—";
 
     },
 
+
     {
       enableHighAccuracy: false,
+
       timeout: 8000,
+
       maximumAge: 60000
     }
 
@@ -675,120 +1416,205 @@ function getLocation() {
 }
 
 
-/* =========================================================
+/* ========================================================
    DIGIPIN
-   ========================================================= */
+   ======================================================== */
 
 /*
-  Intentionally left isolated.
+  Deliberately empty for now.
 
-  We will connect the official DIGIPIN implementation here
-  later. We do NOT invent a DIGIPIN from latitude/longitude.
+  We will connect the official DIGIPIN
+  implementation later.
+
+  DO NOT invent a DIGIPIN from coordinates.
 */
 
 function getDIGIPIN() {
+
   return null;
+
 }
 
 
-/* =========================================================
+/* ========================================================
    SUPABASE HEADERS
-   ========================================================= */
+   ======================================================== */
 
-function supabaseHeaders(extra = {}) {
+function supabaseHeaders(
+  extra = {}
+) {
 
   return {
-    "apikey": SUPABASE_PUBLISHABLE_KEY,
+
+    "apikey":
+      SUPABASE_PUBLISHABLE_KEY,
+
     ...extra
+
   };
 
 }
 
 
-/* =========================================================
-   STORAGE UPLOAD
-   ========================================================= */
+/* ========================================================
+   UPLOAD PHOTO
+   ======================================================== */
 
-async function uploadPhoto(blob) {
+async function uploadPhoto(
+  blob
+) {
+
+  /*
+    Every photo gets a unique path.
+  */
 
   const filename =
-    crypto.randomUUID() + ".jpg";
+    crypto.randomUUID() +
+    ".jpg";
+
 
   const path =
-    "reports/" + filename;
+    "reports/" +
+    filename;
+
+
+  const url =
+    SUPABASE_URL +
+    "/storage/v1/object/" +
+    STORAGE_BUCKET +
+    "/" +
+    path;
+
 
   const response =
     await fetch(
-      SUPABASE_URL +
-      "/storage/v1/object/" +
-      STORAGE_BUCKET +
-      "/" +
-      path,
+      url,
       {
+
         method: "POST",
 
-        headers: supabaseHeaders({
-          "Content-Type": "image/jpeg",
-          "x-upsert": "false"
-        }),
+        headers:
+          supabaseHeaders({
 
-        body: blob
+            "Content-Type":
+              "image/jpeg",
+
+            "x-upsert":
+              "false"
+
+          }),
+
+        body:
+          blob
+
       }
     );
 
-  if (!response.ok) {
 
-    const message =
+  if (
+    !response.ok
+  ) {
+
+    const errorText =
       await response.text();
 
+
     throw new Error(
-      "Photo upload failed: " + message
+      "Photo upload failed: " +
+      errorText
     );
 
   }
 
+
   return path;
+
 }
 
 
-/* =========================================================
-   DATABASE INSERT
-   ========================================================= */
+/* ========================================================
+   CREATE DATABASE REPORT
+   ======================================================== */
 
-async function createReport(photoPath, comment) {
+async function createReport(
+  photoPath,
+  comment
+) {
+
+  /*
+    Notice:
+
+    We intentionally DO NOT send:
+
+      created_at
+      photo_expires_at
+
+    Supabase/Postgres will create those
+    automatically using the database defaults.
+  */
 
   const report = {
-    latitude: latitude,
-    longitude: longitude,
-    digipin: getDIGIPIN(),
-    comment: comment || null,
-    photo_url: photoPath,
-    status: "new"
+
+    latitude:
+      latitude,
+
+    longitude:
+      longitude,
+
+    digipin:
+      getDIGIPIN(),
+
+    comment:
+      comment || null,
+
+    photo_url:
+      photoPath,
+
+    status:
+      "new"
+
   };
+
 
   const response =
     await fetch(
       SUPABASE_URL +
       "/rest/v1/reports",
       {
+
         method: "POST",
 
-        headers: supabaseHeaders({
-          "Content-Type": "application/json",
-          "Prefer": "return=minimal"
-        }),
+        headers:
+          supabaseHeaders({
 
-        body: JSON.stringify(report)
+            "Content-Type":
+              "application/json",
+
+            "Prefer":
+              "return=minimal"
+
+          }),
+
+        body:
+          JSON.stringify(
+            report
+          )
+
       }
     );
 
-  if (!response.ok) {
 
-    const message =
+  if (
+    !response.ok
+  ) {
+
+    const errorText =
       await response.text();
 
+
     throw new Error(
-      "Report creation failed: " + message
+      "Report creation failed: " +
+      errorText
     );
 
   }
@@ -796,223 +1622,415 @@ async function createReport(photoPath, comment) {
 }
 
 
-/* =========================================================
-   SEND REPORT
-   ========================================================= */
+/* ========================================================
+   SEND PHOTO
+   ======================================================== */
 
-sendButton.onclick = async () => {
+sendButton.addEventListener(
+  "click",
+  async () => {
 
-  if (!compressedBlob) {
-
-    statusEl.textContent =
-      "Please take a photo first.";
-
-    return;
-  }
-
-  if (
-    latitude === null ||
-    longitude === null
-  ) {
-
-    statusEl.textContent =
-      "Waiting for your location…";
-
-    getLocation();
-
-    return;
-  }
-
-  const comment =
-    document.getElementById("comment").value.trim();
-
-  sendButton.disabled = true;
-
-  sendButton.textContent =
-    "SENDING…";
-
-  statusEl.textContent =
-    "Uploading photo…";
-
-  try {
-
-    const photoPath =
-      await uploadPhoto(compressedBlob);
-
-    statusEl.textContent =
-      "Saving report…";
-
-    await createReport(
-      photoPath,
-      comment
-    );
-
-    statusEl.textContent = "";
-
-    showScreen("success");
-
-    clearCurrentReport();
-
-  } catch (error) {
-
-    console.error(error);
 
     /*
-      If upload fails because we're offline,
-      save the report locally.
+      Safety check.
+
+      The button should never be active
+      without an optimised photo.
     */
 
-    if (!navigator.onLine) {
+    if (
+      !compressedBlob
+    ) {
 
-      await saveOfflineReport();
-
-      offlineNote.classList.add("show");
-
-      statusEl.textContent =
-        "Saved on your phone. We'll retry automatically.";
-
-    } else {
-
-      statusEl.textContent =
-        "Something went wrong. Please try again.";
-
-      console.error(error);
+      return;
 
     }
 
-  } finally {
 
-    sendButton.disabled = false;
+    /*
+      GPS isn't ready yet.
 
-    sendButton.textContent =
-      "SEND REPORT";
+      Don't fail.
+      Just ask the user to wait.
+    */
 
-  }
+    if (
+      latitude === null ||
+      longitude === null
+    ) {
 
-};
+      statusEl.className =
+        "status";
 
-
-/* =========================================================
-   OFFLINE STORAGE
-   ========================================================= */
-
-const DB_NAME = "roadies-db";
-const DB_VERSION = 1;
-const STORE_NAME = "pending-reports";
+      statusEl.textContent =
+        "Getting your location…";
 
 
-function openDB() {
+      getLocation();
 
-  return new Promise((resolve, reject) => {
 
-    const request =
-      indexedDB.open(
-        DB_NAME,
-        DB_VERSION
+      /*
+        Give the GPS a moment,
+        then check again.
+      */
+
+      setTimeout(
+        () => {
+
+          if (
+            latitude !== null &&
+            longitude !== null
+          ) {
+
+            sendButton.click();
+
+          } else {
+
+            statusEl.className =
+              "status error";
+
+            statusEl.textContent =
+              "Please allow location access.";
+
+          }
+
+        },
+        1200
       );
 
-    request.onupgradeneeded = event => {
 
-      const db =
-        event.target.result;
+      return;
+
+    }
+
+
+    const comment =
+      commentInput
+        .value
+        .trim();
+
+
+    /*
+      Disable button immediately
+      to prevent double submissions.
+    */
+
+    sendButton.disabled =
+      true;
+
+    sendButton.textContent =
+      "SENDING…";
+
+
+    statusEl.className =
+      "status";
+
+    statusEl.textContent =
+      "Uploading photo…";
+
+
+    try {
+
+
+      /*
+        STEP 1
+        Upload photo.
+      */
+
+      const photoPath =
+        await uploadPhoto(
+          compressedBlob
+        );
+
+
+      /*
+        STEP 2
+        Create report.
+      */
+
+      statusEl.textContent =
+        "Saving report…";
+
+
+      await createReport(
+        photoPath,
+        comment
+      );
+
+
+      /*
+        STEP 3
+        Success.
+      */
+
+      statusEl.textContent =
+        "";
+
+
+      showScreen(
+        "success"
+      );
+
+
+      resetCurrentReport();
+
+
+    } catch (error) {
+
+      console.error(
+        "Send failed:",
+        error
+      );
+
+
+      /*
+        If the phone is offline,
+        save locally.
+      */
 
       if (
-        !db.objectStoreNames.contains(STORE_NAME)
+        !navigator.onLine
       ) {
 
-        db.createObjectStore(
-          STORE_NAME,
-          {
-            keyPath: "id"
-          }
-        );
+        try {
+
+          await saveOfflineReport();
+
+
+          offlineNote.classList.add(
+            "show"
+          );
+
+
+          statusEl.className =
+            "status";
+
+          statusEl.textContent =
+            "Saved. We'll send it when you're online.";
+
+
+          sendButton.disabled =
+            true;
+
+          sendButton.textContent =
+            "SAVED OFFLINE";
+
+
+        } catch (
+          offlineError
+        ) {
+
+          console.error(
+            offlineError
+          );
+
+
+          showSendError();
+
+        }
+
+      } else {
+
+        showSendError();
 
       }
 
-    };
+    }
 
-    request.onsuccess =
-      () => resolve(request.result);
+  }
+);
 
-    request.onerror =
-      () => reject(request.error);
 
-  });
+/* ========================================================
+   SEND ERROR
+   ======================================================== */
+
+function showSendError() {
+
+  sendButton.disabled =
+    false;
+
+  sendButton.textContent =
+    "SEND PHOTO";
+
+
+  statusEl.className =
+    "status error";
+
+  statusEl.textContent =
+    "Something went wrong. Please try again.";
 
 }
 
+
+/* ========================================================
+   INDEXED DB
+   ======================================================== */
+
+const DB_NAME =
+  "roadies-db";
+
+const DB_VERSION =
+  1;
+
+const STORE_NAME =
+  "pending-reports";
+
+
+function openDatabase() {
+
+  return new Promise(
+    (
+      resolve,
+      reject
+    ) => {
+
+      const request =
+        indexedDB.open(
+          DB_NAME,
+          DB_VERSION
+        );
+
+
+      request.onupgradeneeded =
+        event => {
+
+          const db =
+            event.target.result;
+
+
+          if (
+            !db.objectStoreNames.contains(
+              STORE_NAME
+            )
+          ) {
+
+            db.createObjectStore(
+              STORE_NAME,
+              {
+                keyPath: "id"
+              }
+            );
+
+          }
+
+        };
+
+
+      request.onsuccess =
+        () => {
+
+          resolve(
+            request.result
+          );
+
+        };
+
+
+      request.onerror =
+        () => {
+
+          reject(
+            request.error
+          );
+
+        };
+
+    }
+  );
+
+}
+
+
+/* ========================================================
+   SAVE OFFLINE
+   ======================================================== */
 
 async function saveOfflineReport() {
 
   const db =
-    await openDB();
+    await openDatabase();
 
-  const report = {
 
-    id: crypto.randomUUID(),
+  const pendingReport = {
 
-    latitude,
+    id:
+      crypto.randomUUID(),
 
-    longitude,
+    latitude:
+      latitude,
+
+    longitude:
+      longitude,
 
     comment:
-      document
-        .getElementById("comment")
+      commentInput
         .value
         .trim(),
 
-    photo: compressedBlob,
+    photo:
+      compressedBlob,
 
-    createdAt:
-      new Date().toISOString()
+    savedAt:
+      new Date()
+        .toISOString()
 
   };
 
-  return new Promise((resolve, reject) => {
 
-    const transaction =
-      db.transaction(
-        STORE_NAME,
-        "readwrite"
-      );
+  return new Promise(
+    (
+      resolve,
+      reject
+    ) => {
 
-    transaction
-      .objectStore(STORE_NAME)
-      .put(report);
+      const transaction =
+        db.transaction(
+          STORE_NAME,
+          "readwrite"
+        );
 
-    transaction.oncomplete =
-      () => resolve();
 
-    transaction.onerror =
-      () => reject(transaction.error);
+      transaction
+        .objectStore(
+          STORE_NAME
+        )
+        .put(
+          pendingReport
+        );
 
-  });
+
+      transaction.oncomplete =
+        () => resolve();
+
+
+      transaction.onerror =
+        () =>
+          reject(
+            transaction.error
+          );
+
+    }
+  );
 
 }
 
 
-/* =========================================================
-   RETRY OFFLINE REPORTS
-   ========================================================= */
+/* ========================================================
+   GET OFFLINE REPORTS
+   ======================================================== */
 
-async function flushOfflineReports() {
+async function getOfflineReports() {
 
-  if (!navigator.onLine) return;
+  const db =
+    await openDatabase();
 
-  let db;
 
-  try {
-
-    db = await openDB();
-
-  } catch {
-
-    return;
-
-  }
-
-  const reports =
-    await new Promise(resolve => {
+  return new Promise(
+    (
+      resolve,
+      reject
+    ) => {
 
       const request =
         db
@@ -1020,24 +2038,141 @@ async function flushOfflineReports() {
             STORE_NAME,
             "readonly"
           )
-          .objectStore(STORE_NAME)
+          .objectStore(
+            STORE_NAME
+          )
           .getAll();
 
+
       request.onsuccess =
-        () => resolve(request.result || []);
+        () => {
+
+          resolve(
+            request.result || []
+          );
+
+        };
+
 
       request.onerror =
-        () => resolve([]);
+        () => {
 
-    });
+          reject(
+            request.error
+          );
+
+        };
+
+    }
+  );
+
+}
 
 
-  for (const report of reports) {
+/* ========================================================
+   DELETE OFFLINE REPORT
+   ======================================================== */
+
+async function deleteOfflineReport(
+  id
+) {
+
+  const db =
+    await openDatabase();
+
+
+  return new Promise(
+    (
+      resolve,
+      reject
+    ) => {
+
+      const transaction =
+        db.transaction(
+          STORE_NAME,
+          "readwrite"
+        );
+
+
+      transaction
+        .objectStore(
+          STORE_NAME
+        )
+        .delete(id);
+
+
+      transaction.oncomplete =
+        () => resolve();
+
+
+      transaction.onerror =
+        () =>
+          reject(
+            transaction.error
+          );
+
+    }
+  );
+
+}
+
+
+/* ========================================================
+   RETRY OFFLINE REPORTS
+   ======================================================== */
+
+async function flushOfflineReports() {
+
+  if (
+    !navigator.onLine
+  ) {
+
+    return;
+
+  }
+
+
+  let reports;
+
+
+  try {
+
+    reports =
+      await getOfflineReports();
+
+  } catch {
+
+    return;
+
+  }
+
+
+  if (
+    reports.length === 0
+  ) {
+
+    return;
+
+  }
+
+
+  console.log(
+    "Retrying",
+    reports.length,
+    "offline report(s)"
+  );
+
+
+  for (
+    const report
+    of reports
+  ) {
 
     try {
 
       /*
-        Temporarily use the saved GPS position.
+        Restore the original GPS
+        attached to the report.
       */
 
       latitude =
@@ -1046,39 +2181,55 @@ async function flushOfflineReports() {
       longitude =
         report.longitude;
 
+
+      /*
+        Upload saved photo.
+      */
+
       const photoPath =
         await uploadPhoto(
           report.photo
         );
+
+
+      /*
+        Create report.
+      */
 
       await createReport(
         photoPath,
         report.comment
       );
 
-      await new Promise(resolve => {
 
-        const transaction =
-          db.transaction(
-            STORE_NAME,
-            "readwrite"
-          );
+      /*
+        Remove local copy only
+        after successful upload
+        AND database insertion.
+      */
 
-        transaction
-          .objectStore(STORE_NAME)
-          .delete(report.id);
+      await deleteOfflineReport(
+        report.id
+      );
 
-        transaction.oncomplete =
-          () => resolve();
 
-      });
+      console.log(
+        "Offline report sent."
+      );
+
 
     } catch (error) {
 
-      console.error(
+      console.warn(
         "Offline retry failed:",
         error
       );
+
+
+      /*
+        Keep it in IndexedDB.
+        It will retry later.
+      */
 
     }
 
@@ -1087,87 +2238,172 @@ async function flushOfflineReports() {
 }
 
 
+/* ========================================================
+   ONLINE EVENT
+   ======================================================== */
+
 window.addEventListener(
   "online",
-  flushOfflineReports
+  () => {
+
+    flushOfflineReports();
+
+  }
 );
 
 
-/* =========================================================
-   SUCCESS / RESET
-   ========================================================= */
+/* ========================================================
+   SUCCESS → NEW REPORT
+   ======================================================== */
 
-document.getElementById("againButton").onclick = () => {
+document
+  .getElementById(
+    "againButton"
+  )
+  .addEventListener(
+    "click",
+    () => {
 
-  clearCurrentReport();
+      resetCurrentReport();
 
-  showScreen("camera");
+      showScreen(
+        "camera"
+      );
 
-};
+    }
+  );
 
 
-function clearCurrentReport() {
+/* ========================================================
+   RESET
+   ======================================================== */
 
-  originalFile = null;
-  compressedBlob = null;
+function resetCurrentReport() {
 
-  latitude = null;
-  longitude = null;
+  originalFile =
+    null;
 
-  fileInput.value = "";
+  compressedBlob =
+    null;
 
-  preview.src = "";
-  preview.style.display = "none";
+  latitude =
+    null;
+
+  longitude =
+    null;
+
+
+  fileInput.value =
+    "";
+
+
+  preview.src =
+    "";
+
+  preview.style.display =
+    "none";
+
 
   cameraPlaceholder.style.display =
     "flex";
 
+
   photoButton.style.display =
     "block";
+
 
   retakeButton.style.display =
     "none";
 
-  document.getElementById("comment").value =
+
+  photoSize.textContent =
+    "Optimising…";
+
+
+  locationText.textContent =
+    "Waiting…";
+
+
+  gpsText.textContent =
+    "—";
+
+
+  commentInput.value =
     "";
 
-  document.getElementById("locationText").textContent =
-    "Finding location…";
 
-  document.getElementById("gpsText").textContent =
-    "—";
+  statusEl.className =
+    "status";
 
-  document.getElementById("photoSize").textContent =
-    "—";
 
-  offlineNote.classList.remove("show");
+  statusEl.textContent =
+    "Optimising photo…";
+
+
+  offlineNote.classList.remove(
+    "show"
+  );
+
+
+  sendButton.disabled =
+    true;
+
+
+  sendButton.textContent =
+    "OPTIMISING PHOTO…";
 
 }
 
 
-/* =========================================================
-   HELPERS
-   ========================================================= */
+/* ========================================================
+   FORMAT FILE SIZE
+   ======================================================== */
 
-function formatBytes(bytes) {
+function formatBytes(
+  bytes
+) {
 
-  if (bytes < 1024)
-    return bytes + " B";
+  if (
+    bytes < 1024
+  ) {
 
-  if (bytes < 1024 * 1024)
-    return (bytes / 1024).toFixed(0) + " KB";
+    return (
+      bytes +
+      " B"
+    );
+
+  }
+
+
+  if (
+    bytes <
+    1024 * 1024
+  ) {
+
+    return (
+      Math.round(
+        bytes / 1024
+      ) +
+      " KB"
+    );
+
+  }
+
 
   return (
-    bytes /
-    (1024 * 1024)
-  ).toFixed(1) + " MB";
+    (
+      bytes /
+      (1024 * 1024)
+    ).toFixed(1) +
+    " MB"
+  );
 
 }
 
 
-/* =========================================================
+/* ========================================================
    STARTUP
-   ========================================================= */
+   ======================================================== */
 
 flushOfflineReports();
 
