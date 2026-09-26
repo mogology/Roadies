@@ -1,85 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
-  >
+    content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
+  />
 
   <meta
-    name="theme-color"
-    content="#ffffff"
-  >
+    name="description"
+    content="Roadies — make broken roads visible."
+  />
 
   <title>Roadies</title>
 
-
-  <!-- =====================================================
-       FONTS
-       ===================================================== -->
-
+  <!-- Editorial typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
     rel="stylesheet"
-  >
+  />
 
-
-  <!-- =====================================================
-       SUPABASE
-       ===================================================== -->
-
-  <script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-  ></script>
-
-
-  <!-- =====================================================
-       STYLE
-       ===================================================== -->
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
+    :root {
+      --black: #111111;
+      --gray: #777777;
+      --line: #dddddd;
+      --light: #f7f7f7;
+      --red: #d71920;
+    }
 
     * {
       box-sizing: border-box;
     }
 
-
     html,
     body {
       margin: 0;
       padding: 0;
-
-      width: 100%;
-      min-height: 100%;
-
       background: #ffffff;
-      color: #111111;
-
-      font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
+      color: var(--black);
+      font-family: Inter, Arial, sans-serif;
     }
-
 
     body {
       min-height: 100vh;
     }
-
 
     button,
     textarea,
@@ -87,1371 +59,1421 @@
       font: inherit;
     }
 
-
     button {
-      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
 
-
-    /* =====================================================
-       APP
-       ===================================================== */
-
-    .app {
-
-      width: 100%;
-      min-height: 100vh;
-
-      padding:
-        max(28px, env(safe-area-inset-top))
-        24px
-        max(32px, env(safe-area-inset-bottom));
-
-      display: flex;
-      flex-direction: column;
+    .page {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+      padding: 28px 42px 80px;
     }
 
-
-    /* =====================================================
-       HEADER
-       ===================================================== */
-
-    .top {
-
+    header {
       display: flex;
-
-      justify-content:
-        space-between;
-
+      justify-content: space-between;
       align-items: center;
-
-      font-size: 10px;
-
-      font-weight: 600;
-
-      letter-spacing: 0.15em;
-
-      text-transform: uppercase;
+      margin-bottom: 82px;
     }
-
 
     .brand {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+    }
 
+    .edition {
+      color: #777;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+    }
+
+    .hero {
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
       letter-spacing: 0.18em;
-
+      color: #777;
+      margin-bottom: 22px;
     }
 
-
-    .country {
-
-      opacity: 0.45;
-
-    }
-
-
-    /* =====================================================
-       SCREENS
-       ===================================================== */
-
-    .screen {
-
-      display: none;
-
-      flex: 1;
-
-      flex-direction: column;
-
-    }
-
-
-    .screen.active {
-
-      display: flex;
-
-    }
-
-
-    /* =====================================================
-       EDITORIAL FONT
-       ===================================================== */
-
-    h1,
-    .camera-title,
-    .review-title,
-    .success-title {
-
-      font-family:
-        "Playfair Display",
-        Georgia,
-        serif;
-
-      font-weight: 600;
-
-      letter-spacing: -0.055em;
-
-    }
-
-
-    /* =====================================================
-       HOME
-       ===================================================== */
-
-    .home-content {
-
-      margin-top: 72px;
-
-      max-width: 650px;
-
-    }
-
-
-    .number {
-
-      font-size: 12px;
-
-      letter-spacing: 0.16em;
-
-      margin-bottom: 28px;
-
-    }
-
-
-    .home-title {
-
+    h1 {
       margin: 0;
-
-      font-family:
-        "Playfair Display",
-        Georgia,
-        serif;
-
-      font-size:
-        clamp(58px, 13vw, 105px);
-
-      line-height: 0.88;
-
-      letter-spacing: -0.065em;
-
-      font-weight: 600;
-
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(72px, 10vw, 150px);
+      line-height: 0.82;
+      font-weight: 500;
+      letter-spacing: -0.055em;
     }
 
-
-    .home-copy {
-
-      margin-top: 34px;
-
-      max-width: 320px;
-
-      font-size: 17px;
-
-      line-height: 1.4;
-
+    .intro {
+      margin-top: 42px;
+      max-width: 500px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 28px;
+      line-height: 1.15;
     }
-
-
-    /* =====================================================
-       BUTTON
-       ===================================================== */
 
     .primary-button {
-
+      margin-top: 42px;
       width: 100%;
-
-      max-width: 340px;
-
-      height: 58px;
-
-      margin-top: 40px;
-
-      border: 0;
-
-      background: #111111;
-
-      color: #ffffff;
-
-      font-size: 11px;
-
-      font-weight: 700;
-
-      letter-spacing: 0.14em;
-
-      text-transform: uppercase;
-
+      max-width: 430px;
+      min-height: 64px;
+      border: none;
+      background: var(--black);
+      color: white;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
     }
-
 
     .primary-button:disabled {
-
-      background: #d8d8d8;
-
+      background: #dddddd;
+      color: #999999;
       cursor: default;
-
     }
 
-
-    .secondary-button {
-
-      width: 100%;
-
-      max-width: 340px;
-
-      height: 58px;
-
-      margin-top: 40px;
-
-      border: 1px solid #111111;
-
-      background: #ffffff;
-
-      color: #111111;
-
-      font-size: 11px;
-
-      font-weight: 700;
-
-      letter-spacing: 0.14em;
-
-      text-transform: uppercase;
-
-    }
-
-
-    /* =====================================================
-       CAMERA
-       ===================================================== */
-
-    .camera-content {
-
-      margin-top: 55px;
-
-      max-width: 720px;
-
-    }
-
-
-    .camera-title {
-
-      margin: 0 0 30px;
-
-      font-size:
-        clamp(52px, 12vw, 88px);
-
-      line-height: 0.9;
-
-    }
-
-
-    .camera-box {
-
-      width: 100%;
-
-      aspect-ratio: 4 / 3;
-
-      background: #f2f2f2;
-
-      position: relative;
-
-      overflow: hidden;
-
-    }
-
-
-    .camera-placeholder {
-
-      position: absolute;
-
-      inset: 0;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      color: #777777;
-
-      font-size: 11px;
-
-      font-weight: 600;
-
-      letter-spacing: 0.1em;
-
-      text-transform: uppercase;
-
-    }
-
-
-    #fileInput {
-
+    .screen {
       display: none;
-
     }
 
-
-    /* =====================================================
-       REVIEW
-       ===================================================== */
-
-    .review-content {
-
-      margin-top: 55px;
-
-      max-width: 720px;
-
-    }
-
-
-    .review-title {
-
-      margin: 0 0 42px;
-
-      font-size:
-        clamp(58px, 13vw, 100px);
-
-      line-height: 0.86;
-
-    }
-
-
-    .photo-preview {
-
+    .screen.active {
       display: block;
+    }
 
+    .report {
+      max-width: 720px;
+    }
+
+    .report-title {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(58px, 8vw, 105px);
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      margin: 0 0 45px;
+      font-weight: 500;
+    }
+
+    .photo-wrapper {
       width: 100%;
-
-      aspect-ratio: 4 / 3;
-
-      object-fit: cover;
-
-      background: #f2f2f2;
-
-      margin-bottom: 30px;
-
+      background: #f5f5f5;
+      overflow: hidden;
+      margin-bottom: 36px;
     }
 
-
-    /* =====================================================
-       DETAILS
-       ===================================================== */
-
-    .meta {
-
-      border-top: 1px solid #111111;
-
+    #preview {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 65vh;
+      object-fit: contain;
     }
 
+    .metadata {
+      border-top: 1px solid var(--black);
+    }
 
     .meta-row {
-
       display: grid;
-
-      grid-template-columns:
-        110px
-        1fr;
-
+      grid-template-columns: 190px 1fr;
+      min-height: 72px;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
       gap: 20px;
-
-      padding: 15px 0;
-
-      border-bottom: 1px solid #dddddd;
-
-      font-size: 14px;
-
     }
-
 
     .meta-label {
-
-      font-size: 10px;
-
-      letter-spacing: 0.13em;
-
-      text-transform: uppercase;
-
-      color: #777777;
-
+      color: #777;
+      font-size: 12px;
+      letter-spacing: 0.16em;
     }
-
 
     .meta-value {
-
-      word-break: break-word;
-
+      font-size: 16px;
+      line-height: 1.35;
     }
 
-
-    .ok {
-
+    .location-button {
+      appearance: none;
+      border: none;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      color: var(--black);
+      font-size: 13px;
       font-weight: 600;
-
+      letter-spacing: 0.08em;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      cursor: pointer;
+      text-align: left;
     }
 
-
-    /* =====================================================
-       COMMENT
-       ===================================================== */
-
-    .comment-wrap {
-
-      margin-top: 28px;
-
+    .location-button:disabled {
+      opacity: 0.45;
+      cursor: default;
+      text-decoration: none;
     }
 
-
-    .comment-label {
-
-      margin-bottom: 10px;
-
-      font-size: 10px;
-
-      letter-spacing: 0.13em;
-
-      text-transform: uppercase;
-
-      color: #777777;
-
+    .location-detail {
+      margin-top: 5px;
+      color: #777;
+      font-size: 13px;
     }
 
+    .location-help {
+      margin-top: 6px;
+      color: #777;
+      font-size: 12px;
+      line-height: 1.4;
+      max-width: 420px;
+    }
+
+    .comment-section {
+      margin-top: 46px;
+    }
+
+    .section-label {
+      display: block;
+      margin-bottom: 18px;
+      color: #777;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+    }
 
     textarea {
-
-      display: block;
-
       width: 100%;
-
-      min-height: 110px;
-
-      padding: 16px;
-
-      border: 1px solid #d7d7d7;
-
-      background: #ffffff;
-
-      color: #111111;
-
-      outline: none;
-
+      min-height: 160px;
+      padding: 20px;
       resize: vertical;
-
-      font-size: 15px;
-
+      border: 1px solid #cccccc;
+      border-radius: 0;
+      outline: none;
+      color: var(--black);
+      font-size: 16px;
       line-height: 1.5;
-
     }
-
 
     textarea:focus {
-
-      border-color: #111111;
-
+      border-color: var(--black);
     }
-
 
     textarea::placeholder {
-
-      color: #888888;
-
+      color: #999999;
     }
 
-
-    .comment-hint {
-
-      margin-top: 8px;
-
-      font-size: 11px;
-
-      color: #888888;
-
+    .character-count {
+      margin-top: 10px;
+      color: #888;
+      font-size: 12px;
     }
-
-
-    /* =====================================================
-       STATUS
-       ===================================================== */
 
     .status {
-
-      min-height: 20px;
-
-      margin-top: 18px;
-
-      font-size: 12px;
-
-      color: #555555;
-
+      margin-top: 22px;
+      color: #555;
+      font-size: 13px;
     }
 
-
-    .error {
-
-      color: #c00020;
-
+    .success {
+      min-height: 65vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
-
-    /* =====================================================
-       SUCCESS
-       ===================================================== */
-
-    .success-content {
-
-      margin-top: 72px;
-
+    .success-inner {
       max-width: 600px;
-
     }
 
-
-    .success-number {
-
-      margin-bottom: 28px;
-
-      font-size: 11px;
-
-      font-weight: 600;
-
-      letter-spacing: 0.15em;
-
-    }
-
-
-    .success-title {
-
+    .success h2 {
       margin: 0;
-
-      font-size:
-        clamp(65px, 14vw, 110px);
-
-      line-height: 0.85;
-
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(64px, 9vw, 120px);
+      line-height: 0.88;
+      font-weight: 500;
+      letter-spacing: -0.05em;
     }
 
-
-    .success-copy {
-
-      margin-top: 34px;
-
-      max-width: 320px;
-
-      font-size: 17px;
-
-      line-height: 1.4;
-
+    .success p {
+      margin-top: 32px;
+      color: #666;
+      font-size: 15px;
+      line-height: 1.6;
     }
 
+    .secondary-button {
+      margin-top: 35px;
+      background: white;
+      border: 1px solid var(--black);
+      padding: 18px 26px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+    }
 
-    /* =====================================================
-       DESKTOP
-       ===================================================== */
+    .error-message {
+      margin-top: 25px;
+      padding: 18px;
+      background: #fafafa;
+      border-left: 3px solid var(--red);
+      color: #555;
+      font-size: 13px;
+      line-height: 1.5;
+    }
 
-    @media (min-width: 700px) {
+    .hidden {
+      display: none !important;
+    }
 
-      .app {
+    #fileInput {
+      display: none;
+    }
 
-        padding-left: 7vw;
-
-        padding-right: 7vw;
-
+    @media (max-width: 700px) {
+      .page {
+        padding: 25px 43px 65px;
       }
 
+      header {
+        margin-bottom: 70px;
+      }
+
+      .meta-row {
+        grid-template-columns: 1fr;
+        gap: 7px;
+        padding: 18px 0;
+      }
+
+      .meta-label {
+        align-self: end;
+      }
+
+      .primary-button {
+        max-width: none;
+      }
+
+      .intro {
+        font-size: 24px;
+      }
     }
-
   </style>
-
 </head>
-
 
 <body>
 
+  <main class="page">
 
-<div class="app">
+    <!-- ========================================================= -->
+    <!-- HOME -->
+    <!-- ========================================================= -->
 
+    <section id="homeScreen" class="screen active">
 
-  <!-- =====================================================
-       HEADER
-       ===================================================== -->
+      <header>
+        <div class="brand">ROADIES</div>
+        <div class="edition">INDIA / 01</div>
+      </header>
 
-  <header class="top">
+      <div class="hero">
 
-    <div class="brand">
-      ROADIES
-    </div>
+        <div class="eyebrow">01</div>
 
-    <div class="country">
-      INDIA / 01
-    </div>
+        <h1>
+          Better roads<br>
+          begin here.
+        </h1>
 
-  </header>
-
-
-
-  <!-- =====================================================
-       HOME
-       ===================================================== -->
-
-  <section
-    id="homeScreen"
-    class="screen active"
-  >
-
-    <div class="home-content">
-
-      <div class="number">
-        01
-      </div>
-
-
-      <h1 class="home-title">
-
-        Better roads<br>
-        begin here.
-
-      </h1>
-
-
-      <div class="home-copy">
-
-        See a broken road?<br>
-        Make it visible.
-
-      </div>
-
-
-      <button
-        id="startButton"
-        class="primary-button"
-      >
-
-        Report a broken road
-
-      </button>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =====================================================
-       CAMERA
-       ===================================================== -->
-
-  <section
-    id="cameraScreen"
-    class="screen"
-  >
-
-    <div class="camera-content">
-
-      <h1 class="camera-title">
-
-        Show us<br>
-        the road.
-
-      </h1>
-
-
-      <div class="camera-box">
-
-        <div class="camera-placeholder">
-
-          Camera ready
-
+        <div class="intro">
+          See a broken road?<br>
+          Make it visible.
         </div>
 
+        <button
+          id="startButton"
+          class="primary-button"
+          type="button"
+        >
+          REPORT A BROKEN ROAD
+        </button>
+
       </div>
 
-
-      <input
-        id="fileInput"
-        type="file"
-        accept="image/*"
-        capture="environment"
-      >
+    </section>
 
 
-      <button
-        id="takePhotoButton"
-        class="primary-button"
-      >
+    <!-- ========================================================= -->
+    <!-- REPORT -->
+    <!-- ========================================================= -->
 
-        Take photo
+    <section id="reportScreen" class="screen">
 
-      </button>
+      <header>
+        <div class="brand">ROADIES</div>
+        <div class="edition">INDIA / 01</div>
+      </header>
 
-    </div>
+      <div class="report">
 
-  </section>
+        <h1 class="report-title">
+          Almost<br>
+          there.
+        </h1>
 
+        <div class="photo-wrapper">
+          <img id="preview" alt="Road report photo">
+        </div>
 
+        <div class="metadata">
 
-  <!-- =====================================================
-       REVIEW
-       ===================================================== -->
+          <!-- PHOTO -->
 
-  <section
-    id="reviewScreen"
-    class="screen"
-  >
-
-    <div class="review-content">
-
-
-      <h1 class="review-title">
-
-        Almost<br>
-        there.
-
-      </h1>
-
-
-      <img
-        id="photoPreview"
-        class="photo-preview"
-        alt="Road photo"
-      >
-
-
-      <!-- DETAILS -->
-
-      <div class="meta">
-
-
-        <div class="meta-row">
-
-          <div class="meta-label">
-            Photo
+          <div class="meta-row">
+            <div class="meta-label">PHOTO</div>
+            <div id="photoSize" class="meta-value">
+              Preparing...
+            </div>
           </div>
 
+
+          <!-- LOCATION -->
+
+          <div class="meta-row">
+
+            <div class="meta-label">
+              LOCATION
+            </div>
+
+            <div id="locationStatus" class="meta-value">
+
+              <button
+                id="locationButton"
+                class="location-button"
+                type="button"
+              >
+                SHARE MY LOCATION
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- DIGIPIN -->
+
           <div
-            id="photoSize"
-            class="meta-value"
+            id="digipinRow"
+            class="meta-row hidden"
           >
-            Preparing...
+
+            <div class="meta-label">
+              DIGIPIN
+            </div>
+
+            <div
+              id="digipinValue"
+              class="meta-value"
+            ></div>
+
+          </div>
+
+
+          <!-- GPS -->
+
+          <div
+            id="gpsRow"
+            class="meta-row hidden"
+          >
+
+            <div class="meta-label">
+              GPS
+            </div>
+
+            <div
+              id="gpsValue"
+              class="meta-value"
+            ></div>
+
           </div>
 
         </div>
 
 
-        <div class="meta-row">
+        <!-- COMMENT -->
 
-          <div class="meta-label">
-            Location
-          </div>
+        <div class="comment-section">
 
-          <div
-            id="locationStatus"
-            class="meta-value"
+          <label
+            class="section-label"
+            for="commentInput"
           >
-            Finding location...
+            ANYTHING ELSE?
+          </label>
+
+          <textarea
+            id="commentInput"
+            maxlength="300"
+            placeholder="Tell us what is wrong here. Optional."
+          ></textarea>
+
+          <div class="character-count">
+            Max 300 characters
           </div>
 
         </div>
 
 
         <div
-          id="digipinRow"
-          class="meta-row"
-          style="display:none"
+          id="statusMessage"
+          class="status"
         >
-
-          <div class="meta-label">
-            DIGIPIN
-          </div>
-
-          <div
-            id="digipinValue"
-            class="meta-value"
-          ></div>
-
+          Photo preparing...
         </div>
+
+
+        <button
+          id="sendButton"
+          class="primary-button"
+          type="button"
+          disabled
+        >
+          SEND PHOTO
+        </button>
 
 
         <div
-          id="gpsRow"
-          class="meta-row"
-          style="display:none"
-        >
-
-          <div class="meta-label">
-            GPS
-          </div>
-
-          <div
-            id="gpsValue"
-            class="meta-value"
-          ></div>
-
-        </div>
-
+          id="errorMessage"
+          class="error-message hidden"
+        ></div>
 
       </div>
 
+    </section>
 
 
-      <!-- =================================================
-           COMMENT
-           ================================================= -->
+    <!-- ========================================================= -->
+    <!-- SUCCESS -->
+    <!-- ========================================================= -->
 
-      <div class="comment-wrap">
+    <section id="successScreen" class="screen">
 
-        <div class="comment-label">
+      <header>
+        <div class="brand">ROADIES</div>
+        <div class="edition">INDIA / 01</div>
+      </header>
 
-          Anything else?
+      <div class="success">
 
-        </div>
+        <div class="success-inner">
 
+          <h2>
+            Seen.<br>
+            Reported.
+          </h2>
 
-        <textarea
-          id="commentInput"
-          maxlength="300"
-          placeholder="Tell us what is wrong here. Optional."
-        ></textarea>
+          <p>
+            Thanks for making the road visible.
+          </p>
 
-
-        <div class="comment-hint">
-
-          Max 300 characters
+          <button
+            id="newReportButton"
+            class="secondary-button"
+            type="button"
+          >
+            REPORT ANOTHER ROAD
+          </button>
 
         </div>
 
       </div>
 
+    </section>
+
+  </main>
 
 
-      <!-- STATUS -->
+  <!-- =========================================================== -->
+  <!-- HIDDEN CAMERA INPUT -->
+  <!-- =========================================================== -->
 
-      <div
-        id="statusMessage"
-        class="status"
-      ></div>
-
-
-
-      <!-- SEND -->
-
-      <button
-        id="sendButton"
-        class="primary-button"
-        disabled
-      >
-
-        Send photo
-
-      </button>
-
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =====================================================
-       SUCCESS
-       ===================================================== -->
-
-  <section
-    id="successScreen"
-    class="screen"
-  >
-
-    <div class="success-content">
-
-
-      <div class="success-number">
-
-        REPORT RECEIVED
-
-      </div>
-
-
-      <h1 class="success-title">
-
-        Thank<br>
-        you.
-
-      </h1>
-
-
-      <div class="success-copy">
-
-        Your road report has been recorded.
-
-      </div>
-
-
-      <button
-        id="anotherButton"
-        class="secondary-button"
-      >
-
-        Report another road
-
-      </button>
-
-
-    </div>
-
-  </section>
-
-
-</div>
-
+  <input
+    id="fileInput"
+    type="file"
+    accept="image/*"
+    capture="environment"
+  />
 
 
 <script>
-
-/* =========================================================
-   CONFIG
-   ========================================================= */
+/* ===============================================================
+   ROADIES CONFIG
+   =============================================================== */
 
 const SUPABASE_URL =
   "https://rdxavtxfifvuwrcnsga.supabase.co";
 
-
 /*
-  PASTE YOUR EXISTING
-  sb_publishable_... KEY HERE.
+   PUT YOUR SUPABASE PUBLISHABLE KEY BETWEEN THE QUOTES BELOW.
 
-  NEVER put sb_secret_ here.
+   DO NOT USE YOUR sb_secret_ KEY HERE.
 */
-
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_AFElmTasdfqRKSu9kUz6BA_odt416e_";
 
-
-const STORAGE_BUCKET =
-  "road-report";
-
-
-const REPORT_TABLE =
-  "reports";
+const STORAGE_BUCKET = "road-report";
+const REPORT_TABLE = "reports";
 
 
-
-/* =========================================================
-   SUPABASE CLIENT
-   ========================================================= */
-
-const {
-  createClient
-} = window.supabase;
-
+/* ===============================================================
+   SUPABASE
+   =============================================================== */
 
 const supabaseClient =
-  createClient(
+  window.supabase.createClient(
     SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY,
-    {
-      auth: {
-        persistSession: false,
-        autoRefreshToken: false,
-        detectSessionInUrl: false
-      }
-    }
+    SUPABASE_PUBLISHABLE_KEY
   );
 
 
-
-/* =========================================================
-   ELEMENTS
-   ========================================================= */
+/* ===============================================================
+   DOM
+   =============================================================== */
 
 const homeScreen =
-  document.getElementById(
-    "homeScreen"
-  );
+  document.getElementById("homeScreen");
 
-
-const cameraScreen =
-  document.getElementById(
-    "cameraScreen"
-  );
-
-
-const reviewScreen =
-  document.getElementById(
-    "reviewScreen"
-  );
-
+const reportScreen =
+  document.getElementById("reportScreen");
 
 const successScreen =
-  document.getElementById(
-    "successScreen"
-  );
-
+  document.getElementById("successScreen");
 
 const startButton =
-  document.getElementById(
-    "startButton"
-  );
-
-
-const takePhotoButton =
-  document.getElementById(
-    "takePhotoButton"
-  );
-
-
-const anotherButton =
-  document.getElementById(
-    "anotherButton"
-  );
-
+  document.getElementById("startButton");
 
 const fileInput =
-  document.getElementById(
-    "fileInput"
-  );
+  document.getElementById("fileInput");
 
-
-const photoPreview =
-  document.getElementById(
-    "photoPreview"
-  );
-
+const preview =
+  document.getElementById("preview");
 
 const photoSize =
-  document.getElementById(
-    "photoSize"
-  );
-
+  document.getElementById("photoSize");
 
 const locationStatus =
-  document.getElementById(
-    "locationStatus"
-  );
+  document.getElementById("locationStatus");
 
+const locationButton =
+  document.getElementById("locationButton");
 
 const digipinRow =
-  document.getElementById(
-    "digipinRow"
-  );
-
+  document.getElementById("digipinRow");
 
 const digipinValue =
-  document.getElementById(
-    "digipinValue"
-  );
-
+  document.getElementById("digipinValue");
 
 const gpsRow =
-  document.getElementById(
-    "gpsRow"
-  );
-
+  document.getElementById("gpsRow");
 
 const gpsValue =
-  document.getElementById(
-    "gpsValue"
-  );
-
+  document.getElementById("gpsValue");
 
 const commentInput =
-  document.getElementById(
-    "commentInput"
-  );
-
+  document.getElementById("commentInput");
 
 const statusMessage =
-  document.getElementById(
-    "statusMessage"
-  );
-
+  document.getElementById("statusMessage");
 
 const sendButton =
-  document.getElementById(
-    "sendButton"
-  );
+  document.getElementById("sendButton");
+
+const errorMessage =
+  document.getElementById("errorMessage");
+
+const newReportButton =
+  document.getElementById("newReportButton");
 
 
-
-/* =========================================================
+/* ===============================================================
    STATE
-   ========================================================= */
+   =============================================================== */
 
-let compressedBlob =
-  null;
+let originalFile = null;
+let compressedBlob = null;
 
+let currentLocation = null;
+let currentDigipin = null;
 
-let currentLocation = {
-  latitude: null,
-  longitude: null
-};
-
-
-let currentDigipin =
-  null;
+let photoReady = false;
+let locationReady = false;
 
 
-let currentObjectUrl =
-  null;
-
-
-let isSending =
-  false;
-
-
-let sendMode =
-  "send";
-
-
-
-/* =========================================================
-   SCREEN
-   ========================================================= */
+/* ===============================================================
+   SCREEN HELPERS
+   =============================================================== */
 
 function showScreen(screen) {
 
-  [
-    homeScreen,
-    cameraScreen,
-    reviewScreen,
-    successScreen
-  ]
-  .forEach(
-    item => {
+  homeScreen.classList.remove("active");
+  reportScreen.classList.remove("active");
+  successScreen.classList.remove("active");
 
-      item.classList.remove(
-        "active"
-      );
+  screen.classList.add("active");
 
-    }
-  );
-
-
-  screen.classList.add(
-    "active"
-  );
-
+  window.scrollTo({
+    top: 0,
+    behavior: "instant"
+  });
 }
 
 
+/* ===============================================================
+   START
+   =============================================================== */
 
-/* =========================================================
-   OPEN CAMERA
-   ========================================================= */
+startButton.addEventListener("click", () => {
 
-function openCamera() {
+  hideError();
 
-  resetForm();
+  fileInput.value = "";
 
+  fileInput.click();
 
-  showScreen(
-    cameraScreen
-  );
-
-
-  setTimeout(
-    () => {
-
-      fileInput.click();
-
-    },
-    180
-  );
-
-}
+});
 
 
+/* ===============================================================
+   PHOTO SELECTED
+   =============================================================== */
 
-/* =========================================================
-   HOME
-   ========================================================= */
+fileInput.addEventListener("change", async () => {
 
-startButton.addEventListener(
-  "click",
-  openCamera
-);
+  const file = fileInput.files?.[0];
 
-
-
-takePhotoButton.addEventListener(
-  "click",
-  () => {
-
-    fileInput.click();
-
+  if (!file) {
+    return;
   }
-);
 
+  originalFile = file;
 
+  showScreen(reportScreen);
 
-/* =========================================================
-   FILE INPUT
-   ========================================================= */
+  resetReportState();
 
-fileInput.addEventListener(
-  "change",
-  async event => {
+  preview.src = URL.createObjectURL(file);
 
-    const file =
-      event.target.files?.[0];
-
-
-    if (!file) {
-
-      return;
-
-    }
-
-
-    await preparePhoto(
-      file
-    );
-
-  }
-);
-
-
-
-/* =========================================================
-   PREPARE PHOTO
-   ========================================================= */
-
-async function preparePhoto(
-  file
-) {
-
-  compressedBlob =
-    null;
-
-
-  sendMode =
-    "send";
-
-
-  sendButton.disabled =
-    true;
-
-
-  sendButton.textContent =
-    "Send photo";
-
+  photoSize.textContent = formatKB(file.size);
 
   statusMessage.textContent =
-    "Optimising photo…";
-
-
-  statusMessage.classList.remove(
-    "error"
-  );
-
-
-  showScreen(
-    reviewScreen
-  );
-
+    "Optimising photo...";
 
   try {
 
-    const blob =
-      await compressImage(
-        file
-      );
-
-
     compressedBlob =
-      blob;
+      await compressImage(file);
 
-
-    if (currentObjectUrl) {
-
-      URL.revokeObjectURL(
-        currentObjectUrl
-      );
-
-    }
-
-
-    currentObjectUrl =
-      URL.createObjectURL(
-        blob
-      );
-
-
-    photoPreview.src =
-      currentObjectUrl;
-
+    photoReady = true;
 
     photoSize.textContent =
-      formatBytes(
-        blob.size
-      );
-
+      formatKB(compressedBlob.size);
 
     statusMessage.textContent =
       "Photo optimised ✓";
 
+    updateSendButton();
 
-    sendButton.disabled =
-      false;
+  } catch (error) {
+
+    console.error(
+      "[ROADIES] PHOTO ERROR",
+      error
+    );
+
+    statusMessage.textContent =
+      "Could not optimise this photo.";
+
+  }
+
+});
 
 
-    findLocation();
+/* ===============================================================
+   RESET
+   =============================================================== */
+
+function resetReportState() {
+
+  compressedBlob = null;
+
+  currentLocation = null;
+  currentDigipin = null;
+
+  photoReady = false;
+  locationReady = false;
+
+  locationStatus.innerHTML = `
+    <button
+      id="locationButton"
+      class="location-button"
+      type="button"
+    >
+      SHARE MY LOCATION
+    </button>
+  `;
+
+  /*
+    Re-bind the button because we just replaced its HTML.
+  */
+  window.locationButton =
+    document.getElementById("locationButton");
+
+  window.locationButton.addEventListener(
+    "click",
+    requestLocation
+  );
+
+  digipinRow.classList.add("hidden");
+  gpsRow.classList.add("hidden");
+
+  sendButton.disabled = true;
+
+  hideError();
+}
+
+
+/* ===============================================================
+   LOCATION
+   =============================================================== */
+
+/*
+  IMPORTANT:
+
+  We DO NOT request location automatically.
+
+  The user must tap:
+
+      SHARE MY LOCATION
+
+  This lets Chrome/iPhone show the native permission prompt.
+*/
+
+locationButton.addEventListener(
+  "click",
+  requestLocation
+);
+
+
+async function requestLocation() {
+
+  hideError();
+
+  const button =
+    document.getElementById("locationButton");
+
+  if (!navigator.geolocation) {
+
+    locationStatus.innerHTML = `
+      <div>
+        Location is not supported on this device.
+      </div>
+    `;
+
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent =
+    "FINDING LOCATION...";
+
+
+  /*
+    Check browser permission when supported.
+  */
+
+  try {
+
+    if (navigator.permissions) {
+
+      const permission =
+        await navigator.permissions.query({
+          name: "geolocation"
+        });
+
+      if (permission.state === "denied") {
+
+        locationStatus.innerHTML = `
+          <div>
+            Location permission is blocked.
+          </div>
+
+          <div class="location-help">
+            Allow location access for Chrome in
+            your phone settings, then tap TRY AGAIN.
+          </div>
+
+          <button
+            id="locationButton"
+            class="location-button"
+            type="button"
+            style="margin-top:10px"
+          >
+            TRY AGAIN
+          </button>
+        `;
+
+        document
+          .getElementById("locationButton")
+          .addEventListener(
+            "click",
+            requestLocation
+          );
+
+        return;
+      }
+    }
+
+  } catch (permissionError) {
+
+    /*
+      Some mobile browsers don't expose the
+      Permissions API properly.
+
+      That's okay. We continue to the actual
+      geolocation request.
+    */
+
+    console.log(
+      "[ROADIES] Permission API unavailable"
+    );
+
+  }
+
+
+  /*
+    Ask browser for actual GPS location.
+  */
+
+  navigator.geolocation.getCurrentPosition(
+
+    function(position) {
+
+      const latitude =
+        position.coords.latitude;
+
+      const longitude =
+        position.coords.longitude;
+
+      const accuracy =
+        position.coords.accuracy;
+
+
+      currentLocation = {
+        latitude,
+        longitude,
+        accuracy
+      };
+
+
+      try {
+
+        currentDigipin =
+          getDigipin(
+            latitude,
+            longitude
+          );
+
+      } catch (digipinError) {
+
+        console.error(
+          "[ROADIES] DIGIPIN ERROR",
+          digipinError
+        );
+
+        currentDigipin = null;
+
+      }
+
+
+      locationReady = true;
+
+
+      /* LOCATION */
+
+      locationStatus.innerHTML = `
+        <div>
+          Location found ✓
+        </div>
+
+        <div class="location-detail">
+          Accuracy ±${Math.round(accuracy)} m
+        </div>
+      `;
+
+
+      /* DIGIPIN */
+
+      if (currentDigipin) {
+
+        digipinRow.classList.remove(
+          "hidden"
+        );
+
+        digipinValue.textContent =
+          formatDigipin(currentDigipin);
+
+      }
+
+
+      /* GPS */
+
+      gpsRow.classList.remove(
+        "hidden"
+      );
+
+      gpsValue.textContent =
+        `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
+
+
+      console.log(
+        "[ROADIES] LOCATION",
+        currentLocation
+      );
+
+      console.log(
+        "[ROADIES] DIGIPIN",
+        currentDigipin
+      );
+
+
+      statusMessage.textContent =
+        "Ready to report.";
+
+      updateSendButton();
+
+    },
+
+
+    function(error) {
+
+      console.error(
+        "[ROADIES] LOCATION ERROR",
+        error
+      );
+
+
+      locationReady = false;
+
+      let message =
+        "Couldn't find your location.";
+
+      let help =
+        "Tap TRY AGAIN.";
+
+
+      if (
+        error.code ===
+        error.PERMISSION_DENIED
+      ) {
+
+        message =
+          "Location permission is needed.";
+
+        help =
+          "Allow location access for Chrome, then tap TRY AGAIN.";
+
+      } else if (
+        error.code ===
+        error.POSITION_UNAVAILABLE
+      ) {
+
+        message =
+          "Your location is unavailable.";
+
+        help =
+          "Make sure Location Services are turned on.";
+
+      } else if (
+        error.code ===
+        error.TIMEOUT
+      ) {
+
+        message =
+          "Location took too long.";
+
+        help =
+          "Tap TRY AGAIN.";
+
+      }
+
+
+      locationStatus.innerHTML = `
+        <div>
+          ${message}
+        </div>
+
+        <div class="location-help">
+          ${help}
+        </div>
+
+        <button
+          id="locationButton"
+          class="location-button"
+          type="button"
+          style="margin-top:10px"
+        >
+          TRY AGAIN
+        </button>
+      `;
+
+
+      document
+        .getElementById("locationButton")
+        .addEventListener(
+          "click",
+          requestLocation
+        );
+
+
+      statusMessage.textContent =
+        "Location required before sending.";
+
+      updateSendButton();
+
+    },
+
+
+    {
+      enableHighAccuracy: true,
+      timeout: 15000,
+      maximumAge: 0
+    }
+
+  );
+
+}
+
+
+/* ===============================================================
+   SEND BUTTON
+   =============================================================== */
+
+function updateSendButton() {
+
+  sendButton.disabled =
+    !photoReady ||
+    !locationReady ||
+    !compressedBlob;
+
+}
+
+
+sendButton.addEventListener(
+  "click",
+  submitReport
+);
+
+
+/* ===============================================================
+   SUBMIT
+   =============================================================== */
+
+async function submitReport() {
+
+  if (
+    !photoReady ||
+    !compressedBlob ||
+    !currentLocation
+  ) {
+
+    return;
+  }
+
+
+  hideError();
+
+  sendButton.disabled = true;
+
+  sendButton.textContent =
+    "SENDING...";
+
+
+  try {
+
+    /*
+      -------------------------------------------------------------
+      STEP 1: Upload photo
+      -------------------------------------------------------------
+    */
+
+    console.log(
+      "[ROADIES] Uploading photo..."
+    );
+
+
+    const fileName =
+      `${crypto.randomUUID()}.jpg`;
+
+
+    const now =
+      new Date();
+
+
+    const year =
+      now.getFullYear();
+
+
+    const month =
+      String(
+        now.getMonth() + 1
+      ).padStart(2, "0");
+
+
+    const filePath =
+      `${year}/${month}/${fileName}`;
+
+
+    const {
+      data: uploadData,
+      error: uploadError
+    } =
+      await supabaseClient
+        .storage
+        .from(STORAGE_BUCKET)
+        .upload(
+          filePath,
+          compressedBlob,
+          {
+            contentType: "image/jpeg",
+            cacheControl: "3600",
+            upsert: false
+          }
+        );
+
+
+    if (uploadError) {
+
+      console.error(
+        "[ROADIES] STORAGE ERROR",
+        uploadError
+      );
+
+      throw new Error(
+        "PHOTO_UPLOAD_FAILED"
+      );
+    }
+
+
+    console.log(
+      "[ROADIES] Photo uploaded",
+      uploadData
+    );
+
+
+    /*
+      -------------------------------------------------------------
+      STEP 2: Save report
+      -------------------------------------------------------------
+    */
+
+    console.log(
+      "[ROADIES] Saving report..."
+    );
+
+
+    const {
+      data: reportData,
+      error: reportError
+    } =
+      await supabaseClient
+        .from(REPORT_TABLE)
+        .insert({
+
+          latitude:
+            currentLocation.latitude,
+
+          longitude:
+            currentLocation.longitude,
+
+          digipin:
+            currentDigipin || null,
+
+          comment:
+            commentInput.value.trim() ||
+            null,
+
+          photo_url:
+            uploadData.path,
+
+          status:
+            "new"
+
+        })
+        .select()
+        .single();
+
+
+    if (reportError) {
+
+      console.error(
+        "[ROADIES] DATABASE ERROR",
+        reportError
+      );
+
+      throw new Error(
+        "DATABASE_INSERT_FAILED"
+      );
+    }
+
+
+    console.log(
+      "[ROADIES] REPORT SAVED",
+      reportData
+    );
+
+
+    /*
+      -------------------------------------------------------------
+      SUCCESS
+      -------------------------------------------------------------
+    */
+
+    sendButton.textContent =
+      "SEND PHOTO";
+
+    showScreen(successScreen);
 
 
   } catch (error) {
 
     console.error(
-      "[ROADIES] Photo preparation failed:",
+      "[ROADIES] SUBMISSION FAILED",
       error
     );
 
 
-    statusMessage.textContent =
-      "Could not prepare photo.";
+    sendButton.disabled = false;
+
+    sendButton.textContent =
+      "SEND PHOTO";
 
 
-    statusMessage.classList.add(
-      "error"
-    );
+    if (
+      error.message ===
+      "PHOTO_UPLOAD_FAILED"
+    ) {
+
+      showError(
+        "We couldn't upload the photo. " +
+        "Please check your connection and try again."
+      );
+
+    } else if (
+      error.message ===
+      "DATABASE_INSERT_FAILED"
+    ) {
+
+      showError(
+        "The photo uploaded, but the report couldn't be saved. " +
+        "Please try again."
+      );
+
+    } else {
+
+      showError(
+        "Something went wrong. Please try again."
+      );
+
+    }
 
   }
 
 }
 
 
+/* ===============================================================
+   NEW REPORT
+   =============================================================== */
 
-/* =========================================================
-   COMPRESS IMAGE
-   ========================================================= */
+newReportButton.addEventListener(
+  "click",
+  () => {
 
-async function compressImage(
-  file
-) {
+    originalFile = null;
+    compressedBlob = null;
+
+    currentLocation = null;
+    currentDigipin = null;
+
+    photoReady = false;
+    locationReady = false;
+
+    commentInput.value = "";
+
+    showScreen(homeScreen);
+
+  }
+);
+
+
+/* ===============================================================
+   ERROR UI
+   =============================================================== */
+
+function showError(message) {
+
+  errorMessage.textContent =
+    message;
+
+  errorMessage.classList.remove(
+    "hidden"
+  );
+
+}
+
+
+function hideError() {
+
+  errorMessage.classList.add(
+    "hidden"
+  );
+
+  errorMessage.textContent = "";
+
+}
+
+
+/* ===============================================================
+   IMAGE COMPRESSION
+   =============================================================== */
+
+async function compressImage(file) {
 
   const bitmap =
-    await createImageBitmap(
-      file
-    );
+    await createImageBitmap(file);
 
 
-  const MAX_WIDTH =
-    1280;
-
+  const MAX_WIDTH = 1280;
 
   let width =
     bitmap.width;
-
 
   let height =
     bitmap.height;
 
 
-  if (
-    width > MAX_WIDTH
-  ) {
+  if (width > MAX_WIDTH) {
 
     const ratio =
       MAX_WIDTH / width;
 
-
     width =
-      MAX_WIDTH;
-
+      Math.round(
+        width * ratio
+      );
 
     height =
       Math.round(
@@ -1469,7 +1491,6 @@ async function compressImage(
 
   canvas.width =
     width;
-
 
   canvas.height =
     height;
@@ -1493,6 +1514,10 @@ async function compressImage(
   );
 
 
+  /*
+    First compression.
+  */
+
   let blob =
     await canvasToBlob(
       canvas,
@@ -1500,10 +1525,11 @@ async function compressImage(
     );
 
 
-  if (
-    blob.size >
-    700 * 1024
-  ) {
+  /*
+    Keep reducing if image is too large.
+  */
+
+  if (blob.size > 400 * 1024) {
 
     blob =
       await canvasToBlob(
@@ -1514,10 +1540,7 @@ async function compressImage(
   }
 
 
-  if (
-    blob.size >
-    1000 * 1024
-  ) {
+  if (blob.size > 400 * 1024) {
 
     blob =
       await canvasToBlob(
@@ -1528,13 +1551,9 @@ async function compressImage(
   }
 
 
-  bitmap.close();
-
-
   return blob;
 
 }
-
 
 
 function canvasToBlob(
@@ -1546,7 +1565,7 @@ function canvasToBlob(
     (resolve, reject) => {
 
       canvas.toBlob(
-        blob => {
+        (blob) => {
 
           if (!blob) {
 
@@ -1557,13 +1576,9 @@ function canvasToBlob(
             );
 
             return;
-
           }
 
-
-          resolve(
-            blob
-          );
+          resolve(blob);
 
         },
         "image/jpeg",
@@ -1576,162 +1591,97 @@ function canvasToBlob(
 }
 
 
+/* ===============================================================
+   FILE SIZE
+   =============================================================== */
 
-/* =========================================================
-   LOCATION
-   ========================================================= */
+function formatKB(bytes) {
 
-function findLocation() {
-
-  locationStatus.textContent =
-    "Finding location…";
-
-
-  if (
-    !navigator.geolocation
-  ) {
-
-    locationStatus.textContent =
-      "Location unavailable";
-
-    return;
-
-  }
-
-
-  navigator.geolocation.getCurrentPosition(
-
-    position => {
-
-      const latitude =
-        position.coords.latitude;
-
-
-      const longitude =
-        position.coords.longitude;
-
-
-      currentLocation = {
-        latitude,
-        longitude
-      };
-
-
-      currentDigipin =
-        getDIGIPIN(
-          latitude,
-          longitude
-        );
-
-
-      locationStatus.innerHTML =
-        '<span class="ok">Location found ✓</span>';
-
-
-      gpsRow.style.display =
-        "grid";
-
-
-      gpsValue.textContent =
-        `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
-
-
-      if (
-        currentDigipin
-      ) {
-
-        digipinRow.style.display =
-          "grid";
-
-
-        digipinValue.textContent =
-          formatDIGIPIN(
-            currentDigipin
-          );
-
-      }
-
-    },
-
-
-    error => {
-
-      console.error(
-        "[ROADIES] Location error:",
-        error
-      );
-
-
-      locationStatus.textContent =
-        "Location unavailable";
-
-    },
-
-
-    {
-      enableHighAccuracy: true,
-      timeout: 10000,
-      maximumAge: 30000
-    }
-
-  );
+  return `${Math.round(
+    bytes / 1024
+  )} KB`;
 
 }
 
 
-
-/* =========================================================
+/* ===============================================================
    DIGIPIN
-   ========================================================= */
+   India Post grid logic
+   =============================================================== */
 
-function getDIGIPIN(
-  lat,
-  lon
+const DIGIPIN_GRID = [
+
+  ["F", "C", "9", "8"],
+
+  ["J", "3", "2", "7"],
+
+  ["K", "4", "5", "6"],
+
+  ["L", "M", "P", "T"]
+
+];
+
+
+const DIGIPIN_BOUNDS = {
+
+  minLat: 2.5,
+
+  maxLat: 38.5,
+
+  minLon: 63.5,
+
+  maxLon: 99.5
+
+};
+
+
+function getDigipin(
+  latitude,
+  longitude
 ) {
 
-  const L = [
-
-    ["F", "C", "9", "8"],
-
-    ["J", "3", "2", "7"],
-
-    ["K", "4", "5", "6"],
-
-    ["L", "M", "P", "T"]
-
-  ];
-
-
-  let minLat =
-    2.5;
-
-
-  let maxLat =
-    38.5;
-
-
-  let minLon =
-    63.5;
-
-
-  let maxLon =
-    99.5;
-
-
   if (
-    lat < minLat ||
-    lat > maxLat ||
-    lon < minLon ||
-    lon > maxLon
+    latitude <
+      DIGIPIN_BOUNDS.minLat ||
+    latitude >
+      DIGIPIN_BOUNDS.maxLat
   ) {
 
-    return "";
+    throw new Error(
+      "Latitude outside DIGIPIN bounds"
+    );
 
   }
 
 
-  let result =
-    "";
+  if (
+    longitude <
+      DIGIPIN_BOUNDS.minLon ||
+    longitude >
+      DIGIPIN_BOUNDS.maxLon
+  ) {
+
+    throw new Error(
+      "Longitude outside DIGIPIN bounds"
+    );
+
+  }
+
+
+  let minLat =
+    DIGIPIN_BOUNDS.minLat;
+
+  let maxLat =
+    DIGIPIN_BOUNDS.maxLat;
+
+  let minLon =
+    DIGIPIN_BOUNDS.minLon;
+
+  let maxLon =
+    DIGIPIN_BOUNDS.maxLon;
+
+
+  let digipin = "";
 
 
   for (
@@ -1743,628 +1693,128 @@ function getDIGIPIN(
     const latDiv =
       (maxLat - minLat) / 4;
 
-
     const lonDiv =
       (maxLon - minLon) / 4;
 
 
-    let nextMaxLat =
-      maxLat;
-
-
-    let nextMinLat =
-      maxLat - latDiv;
-
+    /*
+      Latitude rows run from north to south.
+    */
 
     let row =
-      0;
+      3 -
+      Math.floor(
+        (latitude - minLat) /
+        latDiv
+      );
 
 
-    for (
-      let x = 0;
-      x < 4;
-      x++
-    ) {
-
-      if (
-        lat >= nextMinLat &&
-        lat < nextMaxLat
-      ) {
-
-        row =
-          x;
-
-        break;
-
-      }
+    let col =
+      Math.floor(
+        (longitude - minLon) /
+        lonDiv
+      );
 
 
-      nextMaxLat =
-        nextMinLat;
+    row =
+      Math.max(
+        0,
+        Math.min(
+          row,
+          3
+        )
+      );
 
 
-      nextMinLat =
-        nextMaxLat - latDiv;
+    col =
+      Math.max(
+        0,
+        Math.min(
+          col,
+          3
+        )
+      );
 
-    }
+
+    digipin +=
+      DIGIPIN_GRID[row][col];
 
 
-    let nextMinLon =
+    /*
+      Narrow the bounding box.
+    */
+
+    const oldMinLat =
+      minLat;
+
+    const oldMinLon =
       minLon;
 
 
-    let nextMaxLon =
-      minLon + lonDiv;
-
-
-    let column =
-      0;
-
-
-    for (
-      let x = 0;
-      x < 4;
-      x++
-    ) {
-
-      if (
-        lon >= nextMinLon &&
-        lon < nextMaxLon
-      ) {
-
-        column =
-          x;
-
-        break;
-
-      }
-
-
-      if (
-        x < 3
-      ) {
-
-        nextMinLon =
-          nextMaxLon;
-
-
-        nextMaxLon =
-          nextMinLon + lonDiv;
-
-      }
-
-    }
-
-
-    result +=
-      L[row][column];
+    maxLat =
+      oldMinLat +
+      latDiv *
+      (4 - row);
 
 
     minLat =
-      nextMinLat;
-
-
-    maxLat =
-      nextMaxLat;
+      oldMinLat +
+      latDiv *
+      (3 - row);
 
 
     minLon =
-      nextMinLon;
+      oldMinLon +
+      lonDiv *
+      col;
 
 
     maxLon =
-      nextMaxLon;
+      minLon +
+      lonDiv;
 
   }
 
 
-  return result;
+  return digipin;
 
 }
 
 
-
-/* =========================================================
+/* ===============================================================
    DIGIPIN DISPLAY
-   ========================================================= */
+   =============================================================== */
 
-function formatDIGIPIN(
-  code
+function formatDigipin(
+  digipin
 ) {
 
   if (
-    !code ||
-    code.length !== 10
+    !digipin ||
+    digipin.length !== 10
   ) {
 
-    return code;
+    return digipin;
 
   }
 
 
   return (
-    code.substring(0, 3) +
+    digipin.slice(0, 3) +
     " " +
-    code.substring(3, 7) +
+    digipin.slice(3, 7) +
     " " +
-    code.substring(7, 10)
+    digipin.slice(7, 10)
   );
 
 }
 
 
-
-/* =========================================================
-   SEND
-   ========================================================= */
-
-sendButton.addEventListener(
-  "click",
-  async () => {
-
-    /*
-      After an error, the button becomes
-      TRY AGAIN and returns to camera.
-    */
-
-    if (
-      sendMode === "retry"
-    ) {
-
-      openCamera();
-
-      return;
-
-    }
-
-
-    if (
-      isSending
-    ) {
-
-      return;
-
-    }
-
-
-    if (
-      !compressedBlob
-    ) {
-
-      return;
-
-    }
-
-
-    if (
-      currentLocation.latitude === null ||
-      currentLocation.longitude === null
-    ) {
-
-      statusMessage.textContent =
-        "Waiting for location…";
-
-
-      findLocation();
-
-
-      return;
-
-    }
-
-
-    await sendReport();
-
-  }
-);
-
-
-
-/* =========================================================
-   SEND REPORT
-   ========================================================= */
-
-async function sendReport() {
-
-  isSending =
-    true;
-
-
-  sendMode =
-    "sending";
-
-
-  sendButton.disabled =
-    true;
-
-
-  sendButton.textContent =
-    "Sending…";
-
-
-  statusMessage.textContent =
-    "Sending report…";
-
-
-  statusMessage.classList.remove(
-    "error"
-  );
-
-
-  const reportId =
-    crypto.randomUUID();
-
-
-  const now =
-    new Date();
-
-
-  const filePath =
-    `${now.getFullYear()}/` +
-    `${String(
-      now.getMonth() + 1
-    ).padStart(2, "0")}/` +
-    `${reportId}.jpg`;
-
-
-  /*
-    ========================================================
-    UPLOAD PHOTO
-    ========================================================
-  */
-
-  console.log(
-    "[ROADIES] Uploading photo...",
-    {
-      filePath,
-      size: compressedBlob.size
-    }
-  );
-
-
-  try {
-
-    const {
-      data: uploadData,
-      error: uploadError
-    } =
-      await supabaseClient
-        .storage
-        .from(
-          STORAGE_BUCKET
-        )
-        .upload(
-          filePath,
-          compressedBlob,
-          {
-            contentType:
-              "image/jpeg",
-
-            cacheControl:
-              "3600",
-
-            upsert:
-              false
-          }
-        );
-
-
-    if (
-      uploadError
-    ) {
-
-      console.error(
-        "[ROADIES] STORAGE ERROR",
-        uploadError
-      );
-
-
-      throw uploadError;
-
-    }
-
-
-    console.log(
-      "[ROADIES] Photo uploaded ✓",
-      uploadData
-    );
-
-
-
-    /*
-      ======================================================
-      INSERT REPORT
-      ======================================================
-    */
-
-    const report = {
-
-      latitude:
-        currentLocation.latitude,
-
-      longitude:
-        currentLocation.longitude,
-
-      digipin:
-        currentDigipin || null,
-
-      comment:
-        commentInput.value.trim() || null,
-
-      photo_url:
-        uploadData.path,
-
-      status:
-        "new"
-
-    };
-
-
-    console.log(
-      "[ROADIES] Saving report...",
-      report
-    );
-
-
-    const {
-      error: reportError
-    } =
-      await supabaseClient
-        .from(
-          REPORT_TABLE
-        )
-        .insert(
-          report
-        );
-
-
-    if (
-      reportError
-    ) {
-
-      console.error(
-        "[ROADIES] DATABASE ERROR",
-        reportError
-      );
-
-
-      throw reportError;
-
-    }
-
-
-    console.log(
-      "[ROADIES] REPORT SAVED ✓"
-    );
-
-
-    /*
-      ======================================================
-      SUCCESS
-      ======================================================
-    */
-
-    isSending =
-      false;
-
-
-    sendMode =
-      "send";
-
-
-    showScreen(
-      successScreen
-    );
-
-
-    resetForm();
-
-
-  } catch (error) {
-
-    console.error(
-      "===================================="
-    );
-
-    console.error(
-      "[ROADIES] SUBMISSION FAILED"
-    );
-
-    console.error(
-      error
-    );
-
-    console.error(
-      "===================================="
-    );
-
-
-    /*
-      Friendly user message.
-      Technical error remains in console.
-    */
-
-    statusMessage.textContent =
-      "Something went wrong. Try again.";
-
-
-    statusMessage.classList.add(
-      "error"
-    );
-
-
-    sendMode =
-      "retry";
-
-
-    isSending =
-      false;
-
-
-    sendButton.disabled =
-      false;
-
-
-    sendButton.textContent =
-      "Try again";
-
-  }
-
-}
-
-
-
-/* =========================================================
-   RESET
-   ========================================================= */
-
-function resetForm() {
-
-  compressedBlob =
-    null;
-
-
-  currentLocation = {
-    latitude: null,
-    longitude: null
-  };
-
-
-  currentDigipin =
-    null;
-
-
-  isSending =
-    false;
-
-
-  sendMode =
-    "send";
-
-
-  commentInput.value =
-    "";
-
-
-  photoSize.textContent =
-    "Preparing...";
-
-
-  locationStatus.textContent =
-    "Finding location...";
-
-
-  digipinValue.textContent =
-    "";
-
-
-  gpsValue.textContent =
-    "";
-
-
-  digipinRow.style.display =
-    "none";
-
-
-  gpsRow.style.display =
-    "none";
-
-
-  statusMessage.textContent =
-    "";
-
-
-  statusMessage.classList.remove(
-    "error"
-  );
-
-
-  sendButton.textContent =
-    "Send photo";
-
-
-  sendButton.disabled =
-    true;
-
-
-  fileInput.value =
-    "";
-
-
-  if (
-    currentObjectUrl
-  ) {
-
-    URL.revokeObjectURL(
-      currentObjectUrl
-    );
-
-
-    currentObjectUrl =
-      null;
-
-  }
-
-
-  photoPreview.removeAttribute(
-    "src"
-  );
-
-}
-
-
-
-/* =========================================================
-   SUCCESS
-   ========================================================= */
-
-anotherButton.addEventListener(
-  "click",
-  openCamera
-);
-
-
-
-/* =========================================================
-   BYTES
-   ========================================================= */
-
-function formatBytes(
-  bytes
-) {
-
-  if (
-    bytes < 1024
-  ) {
-
-    return `${bytes} B`;
-
-  }
-
-
-  if (
-    bytes < 1024 * 1024
-  ) {
-
-    return (
-      Math.round(
-        bytes / 1024
-      ) +
-      " KB"
-    );
-
-  }
-
-
-  return (
-    (
-      bytes /
-      (1024 * 1024)
-    ).toFixed(1) +
-    " MB"
-  );
-
-}
+/* ===============================================================
+   INITIAL STATE
+   =============================================================== */
+
+showScreen(homeScreen);
 
 </script>
 
